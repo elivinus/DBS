@@ -1,8 +1,9 @@
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from .models import ItemList
+
 from .forms import CreateNewList
+from .models import ItemList, Item
 
 # Create your views here.
 
@@ -17,6 +18,8 @@ def register_request(request):
 			itemName = form.cleaned_data['name']
 			createItem = ItemList(name=itemName)
 			createItem.save
+			print("Item Created Successfully!")
+	#	return HttpResponseRedirect("/%i" %createItem.id)
 	else:
 		form = CreateNewList()
 	return render(request,'register.html', {'form':form})

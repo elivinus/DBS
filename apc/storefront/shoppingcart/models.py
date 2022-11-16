@@ -9,9 +9,10 @@ class ItemList(models.Model):
         return self.name
     
     
-class item(models.Model):
+class Item(models.Model):
     itemList = models.ForeignKey(ItemList, on_delete=models.CASCADE)
     itemName = models.CharField(max_length = 300)
     complete = models.BooleanField()
+    
     def _str_(self):
          return self.itemName

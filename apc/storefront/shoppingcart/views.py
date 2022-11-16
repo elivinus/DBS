@@ -1,15 +1,18 @@
+
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from .forms import CreateNewList
+
 # Create your views here.
 
-def calculate():
-	x = 1
-	y = 2 
-	return x
-
 def say_hello(request):
-	x =  calculate()
-	y = 2
-#	return HttpResponse ('Home Page!')
-	return render(request,'homepage.html', { 'pagename' : 'Livinus'})
+	return render(request,'homepage.html', { 'pagename' : 'home'})
+
+def register_request(request):
+    form = CreateNewList()
+    return render(request,'register.html', {'form':form})
+
+def login_request(request):
+    
+    return render(request,'login.html', {'form':'login'})

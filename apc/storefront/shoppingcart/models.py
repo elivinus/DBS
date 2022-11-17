@@ -19,9 +19,11 @@ class Item(models.Model):
 
 class MenuItem(models.Model):
     name = models.CharField(max_length= 200)
-    price = models.FloatField()
-    description = models.CharField(max_length= 200)
+    price = models.FloatField(max_digits=10, decimal_places=2)
+    description = models.CharField(max_length= 300)
     image = models.ImageField(upload_to='menu_images/')
     
+
+
     def _str_(self):
         return self.name

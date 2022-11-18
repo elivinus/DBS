@@ -1,6 +1,7 @@
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.views import View
 
 from .forms import CreateNewList
 from .models import ItemList, Item
@@ -27,3 +28,12 @@ def register_request(request):
 def login_request(request):
     
     return render(request,'login.html', {'form':'login'})
+
+# class page request
+class Index(View):
+	def get(self, request, *args, **kwargs):
+		return render(request, 'index.html')
+
+class About(View):
+	def get(self, request, *args, **kwargs):
+		return render(request, 'about.html')

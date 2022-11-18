@@ -16,9 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 import debug_toolbar
+from django.conf import settings
+from django.conf.urls.static import static
+from shoppingcart.views import Index, About
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('shoppingcart/', include('shoppingcart.urls')),
-    path('_debug_/', include(debug_toolbar.urls))
-]
+    path('_debug_/', include(debug_toolbar.urls)),
+    path('', Index.as_view(), name='index'),
+    path('about/', About.as_view(), name='about'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+  
+

@@ -23,7 +23,5 @@ class MenuItem(models.Model):
     description = models.CharField(max_length= 300)
     image = models.ImageField(upload_to='menu_images/')
     
-
-
     def _str_(self):
         return self.name

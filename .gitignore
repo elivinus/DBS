@@ -4,7 +4,11 @@ db.sqlite3
 /env
 /apc/storefront/env
 *.env
+<<<<<<< HEAD
 .vscode
 __pycache__/
 /env/
 /apc/storefront/env/
+=======
+.vscode
+>>>>>>> 5749438695d0d4057b16904fee73079d2332c233

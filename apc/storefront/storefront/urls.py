@@ -18,7 +18,7 @@ from django.urls import include, path
 import debug_toolbar
 from django.conf import settings
 from django.conf.urls.static import static
-from shoppingcart.views import Index, About, Menu, Contact, Gallery
+from shoppingcart.views import Index, About, Menu, Contact, Gallery, all_menu
 
 
 
@@ -28,7 +28,7 @@ urlpatterns = [
     path('_debug_/', include(debug_toolbar.urls)),
     path('', Index.as_view(), name='index'),
     path('about/', About.as_view(), name='about'),
-    path('menu/', Menu.as_view(), name='menu'),
+    path('menu/', all_menu, name='menu'),
     path('contact/', Contact.as_view(), name='contact'),
     path('gallery/', Gallery.as_view(), name='gallery'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

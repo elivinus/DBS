@@ -2,11 +2,17 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
-
+from .models import MenuItem
 from .forms import CreateNewList
 from .models import ItemList, Item
 
 # Create your views here.
+
+def all_menu(request):
+	menu_test = MenuItem.objects.all()
+	return render(request, 'menu.html', {'menu':menu_test})
+	
+
 
 def say_hello(request):
 	return render(request,'homepage.html', { 'pagename' : 'home'})
@@ -40,7 +46,12 @@ class About(View):
 
 class Menu(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, 'menu.html')
+		return render(request,
+		'menu.html', {
+		"name": name,
+		"price": price,
+		"allergies": allergies,
+		})
 
 class Contact(View):
 	def get(self, request, *args, **kwargs):

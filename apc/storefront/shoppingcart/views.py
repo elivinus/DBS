@@ -37,3 +37,16 @@ class Index(View):
 class About(View):
 	def get(self, request, *args, **kwargs):
 		return render(request, 'about.html')
+
+class Menu(View):
+	def get(self, request, *args, **kwargs):
+		return render(request, 'menu.html')
+
+class Contact(View):
+	def get(self, request, *args, **kwargs):
+		return render(request, 'contact.html')
+
+class Gallery(View):
+	def get(self, request, *args, **kwargs):
+		return render(request, 'gallery.html')
+

@@ -30,4 +30,16 @@ class MenuItem(models.Model):
         return self.name
 
 
+class Customer(models.Model):
+    name = models.CharField(max_length= 200)
+    email = models.EmailField(max_length= 200)
+    phone = models.IntegerField()
+    address = models.CharField(max_length= 200)
+    city = models.CharField(max_length= 200)
+    Postcode = models.CharField(max_length= 200)
+    create_date = models.DateTimeField(auto_now_add=True)
+
+
+    def _str_(self):
+        return self.name
 

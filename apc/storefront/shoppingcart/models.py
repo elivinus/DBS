@@ -24,6 +24,7 @@ class MenuItem(models.Model):
     image = models.ImageField(upload_to='menu_images/')
     category = models.CharField(max_length= 200, blank=True)
     alergies = models.CharField(max_length= 200, blank=True)
+
     
         
     def _str_(self):

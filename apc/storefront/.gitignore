@@ -5,3 +5,6 @@ db.sqlite3
 /apc/storefront/env
 *.env
 .vscode
+__pycache__/
+/env/
+/apc/storefront/env/

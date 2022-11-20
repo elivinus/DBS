@@ -18,13 +18,13 @@ from django.urls import include, path
 import debug_toolbar
 from django.conf import settings
 from django.conf.urls.static import static
-from shoppingcart.views import Index, About, Menu, Contact, Gallery, all_menu
+from shoppingcart.home.views import Index, About, Menu, Contact, Gallery, all_menu
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('shoppingcart/', include('shoppingcart.urls')),
+    path('shoppingcart/', include('shoppingcart.home.urls')),
     path('_debug_/', include(debug_toolbar.urls)),
     path('', Index.as_view(), name='index'),
     path('about/', About.as_view(), name='about'),

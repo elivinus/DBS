@@ -2,20 +2,20 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
-from .models import MenuItem
-from .forms import CreateNewList
-from .models import ItemList, Item
+from ..authentication.models import MenuItem
+from ..authentication.forms import CreateNewList
+from ..authentication.models import ItemList, Item
 
 # Create your views here.
 
 def all_menu(request):
 	menu_test = MenuItem.objects.all()
-	return render(request, 'menu.html', {'menu':menu_test})
+	return render(request, 'accounts/menu.html', {'menu':menu_test})
 	
 
 
 def say_hello(request):
-	return render(request,'homepage.html', { 'pagename' : 'home'})
+	return render(request,'home/homepage.html', { 'pagename' : 'home'})
 
 def register_request(request):
     
@@ -29,20 +29,20 @@ def register_request(request):
 	#	return HttpResponseRedirect("/%i" %createItem.id)
 	else:
 		form = CreateNewList()
-	return render(request,'register.html', {'form':form})
+	return render(request,'accounts/register.html', {'form':form})
 
 def login_request(request):
     
-    return render(request,'login.html', {'form':'login'})
+    return render(request,'accounts/login.html', {'form':'login'})
 
 # class page request
 class Index(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, 'index.html')
+		return render(request, 'home/index.html')
 
 class About(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, 'about.html')
+		return render(request, 'includes/about.html')
 
 class Menu(View):
 	def get(self, request, *args, **kwargs):
@@ -55,9 +55,9 @@ class Menu(View):
 
 class Contact(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, 'contact.html')
+		return render(request, 'includes/contact.html')
 
 class Gallery(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, 'gallery.html')
+		return render(request, 'includes/gallery.html')
 

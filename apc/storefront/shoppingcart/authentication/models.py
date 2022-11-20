@@ -9,7 +9,7 @@ class MenuItem(models.Model):
     image = models.ImageField(upload_to='menu_images/')
     category = models.ManyToManyField('Category', related_name = 'item')
     alergies = models.CharField(max_length= 200, blank=True)
-    orderDetailsId = models.OneToOneField('OrderDetails',on_delete=models.CASCADE,primary_key=True,)
+    orderDetailsId = models.OneToOneField('OrderDetails',on_delete=models.CASCADE,default=None)
     
     def _str_(self):
          return self.name
@@ -84,8 +84,8 @@ class Ingredints(models.Model):
     name = models.CharField(max_length= 200)
     price = models.IntegerField()
     create_date = models.DateTimeField(auto_now_add=True)
-    recipeId = models.ForeignKey('Recipes', on_delete=models.CASCADE)
-    supplierId = models.ForeignKey('Supplier', on_delete=models.CASCADE)
+    recipeId = models.ForeignKey('Recipes', on_delete=models.CASCADE, default=None)
+    supplierId = models.ForeignKey('Supplier', on_delete=models.CASCADE,default=None)
 
     def _str_(self):
         return self.name

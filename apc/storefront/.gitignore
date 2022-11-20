@@ -1,0 +1,10 @@
+*.pyc
+__pycache__
+db.sqlite3
+/env
+/apc/storefront/env
+*.env
+.vscode
+__pycache__/
+/env/
+/apc/storefront/env/

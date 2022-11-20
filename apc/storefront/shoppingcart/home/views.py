@@ -3,14 +3,14 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
 from ..authentication.models import MenuItem
-from ..authentication.forms import CreateNewList
-from ..authentication.models import ItemList, Item
+from ..authentication.forms import CreateNewCustomer
+from ..authentication.models import Category, Customer
 
 # Create your views here.
 
 def all_menu(request):
 	menu_test = MenuItem.objects.all()
-	return render(request, 'accounts/menu.html', {'menu':menu_test})
+	return render(request, 'menu.html', {'menu':menu_test})
 	
 
 
@@ -20,15 +20,15 @@ def say_hello(request):
 def register_request(request):
     
 	if request.method =='POST':
-		form = CreateNewList(request.POST)
+		form = CreateNewCustomer(request.POST)
 		if form.is_valid():
 			itemName = form.cleaned_data['name']
-			createItem = ItemList(name=itemName)
+			createItem = Customer(name=itemName)
 			createItem.save
 			print("Item Created Successfully!")
 	#	return HttpResponseRedirect("/%i" %createItem.id)
 	else:
-		form = CreateNewList()
+		form = CreateNewCustomer()
 	return render(request,'accounts/register.html', {'form':form})
 
 def login_request(request):

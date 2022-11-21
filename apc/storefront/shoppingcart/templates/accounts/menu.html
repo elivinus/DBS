@@ -5,6 +5,7 @@
         <div>
             <form method="POST">
                 {% csrf_token %}
+                <p><h2>Starters</h2></p>
                 <div class="pt-8">
                     {% for starter in starters %}
                     <div class="row">
@@ -25,12 +26,12 @@
                             <div align="left">
                                 <p>{{ starter.description }}</p>
                             </div>
-                           
+                           <div>&nbsp</div>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
-
+                <p><h2>Noodles</h2></p>
                 <div class="pt-8">
                     {% for noodle in noodles %}
                     <div class="row">
@@ -51,12 +52,12 @@
                             <div align="left">
                                 <p>{{ noodle.description }}</p>
                             </div>
-                           
+                            <div>&nbsp</div>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
-                
+                <p><h2>Mains</h2></p>
                 <div class="pt-8">
                     {% for main in mains %}
                     <div class="row">
@@ -77,12 +78,12 @@
                             <div align="left">
                                 <p>{{ main.description }}</p>
                             </div>
-                           
+                            <div>&nbsp</div>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
-
+                <p><h2>Vegetarian</h2></p>
                 <div class="pt-8">
                     {% for Vegetarian in Vegetarians %}
                     <div class="row">
@@ -103,12 +104,12 @@
                             <div align="left">
                                 <p>{{ Vegetarian.description }}</p>
                             </div>
-                           
+                            <div>&nbsp</div>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
-
+                <p><h2>Desserts</h2></p>
                 <div class="pt-8">
                     {% for dessert in desserts %}
                     <div class="row">
@@ -129,12 +130,12 @@
                             <div align="left">
                                 <p>{{ dessert.description }}</p>
                             </div>
-                           
+                            <div>&nbsp</div>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
-
+                <p><h2>Soft Drinks</h2></p>
                 <div class="pt-8">
                     {% for softdrink in softdrinks %}
                     <div class="row">
@@ -155,13 +156,12 @@
                             <div align="left">
                                 <p>{{ softdrink.description }}</p>
                             </div>
-                           
+                            <div>&nbsp</div>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
-
-
+                <p><h2>Alcoholic Drinks</h2></p>
                 <div class="pt-8">
                     {% for Wine in Wines %}
                     <div class="row">
@@ -182,7 +182,7 @@
                             <div align="left">
                                 <p>{{ Wine.description }}</p>
                             </div>
-                           
+                            <div>&nbsp</div>
                         </div>
                     </div>
                     {% endfor %}

@@ -6,7 +6,7 @@ class MenuItem(models.Model):
     name = models.CharField(max_length= 200)
     price = models.DecimalField(max_digits=5, decimal_places=2)
     description = models.CharField(max_length= 300)
-    image = models.ImageField(upload_to='menu_images/')
+    image = models.ImageField(upload_to='MEDIA_URL', blank=True, null=True)
     category = models.ManyToManyField('Category', related_name = 'MenuItem')
     alergies = models.CharField(max_length= 200, blank=True)
  #   orderDetailsId = models.OneToOneField('OrderDetail',on_delete=models.CASCADE,default=None)

@@ -1,19 +1,57 @@
 {% extends 'layouts/base.html' %}
 {% block content %}
-<div class="container mb-5">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-9 col-sm-11 offset-md-1 p4 text-center">
-            <h1> Menu Page</h1>
-        </div>
-    </div>
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-8 col-sm-1 offset-md-1 p4 text-center">
-            <p>Test</p>
-            <p>Dublin.</p>
-            <p>mind.</p>
+<div class="container mb-1">
+    <div class="row justify-content-left mt-1">
+        <div class="col-md-12 col-sm-11 offset-md-1 p4 text-center">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="pt-8">
+                    {% for starter in starters %}
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12">
+                            <img class="rounded" src="{{ starter.image.url }}" width="250" height="200"/>
+                        </div>
+                        <div>
 
-        </div>
-    </div>
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <div class="d-flex flex-row">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ app.pk }}">
+                                    <label class="form-check-label">{{ starter.name }}</label>      
+                                </div>
+                                <p class="font-weight-bold pl-5">{{ starter.price }}</p>
+                            </div>
+                            <p>{{ starter.description }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                </div>
+                
+                <div class="pt-4">
+                    {% for main in mains %}
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12">
+                            <img class="rounded" src="#" width="250" height="200"/>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <div class="d-flex flex-row">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ app.pk }}">
+                                    <label class="form-check-label">{{ main.name }}</label>      
+                                </div>
+                                <p class="font-weight-bold pl-13">{{ main.price }}</p>
+                            </div>
+                            <p>{{ main.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            <button class="btn btn-dark mt-7">Place Order!</button>
+        </form>
 </div>
-{{ menu_test }}
+</div>
+</div>
 {% endblock content %}

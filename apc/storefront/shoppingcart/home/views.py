@@ -4,7 +4,8 @@ from django.shortcuts import render
 from django.views import View
 from ..authentication.models import MenuItem
 from ..authentication.forms import CreateNewCustomer
-from ..authentication.models import Category, Customer
+from ..authentication.models import Customer, OrderDetail
+from ..authentication.models import Category, Order
 
 # Create your views here.
 
@@ -52,6 +53,13 @@ class Menu(View):
 		"price": price,
 		"allergies": allergies,
 		})
+  
+class Order(View):
+    def get(self, request, *args, **kwargs):
+        drinks = MenuItem.objects.filter(category__name__contains('drinks'))
+        appetizer = MenuItem.objects.filter(category__name__contains('appetizer'))
+        fries = MenuItem.objects.filter(category__name__contains('fries'))
+    
 
 class Contact(View):
 	def get(self, request, *args, **kwargs):

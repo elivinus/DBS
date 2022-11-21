@@ -7,6 +7,7 @@ from ..authentication.forms import CreateNewCustomer
 from ..authentication.models import Customer, OrderDetail
 from ..authentication.models import Category, Order
 
+
 # Create your views here.
 
 
@@ -42,7 +43,45 @@ class About(View):
 
 class Menu(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, 'accounts/menu.html')
+			
+		starters = MenuItem.objects.filter(category__name__contains='Starters')
+		
+		mains = MenuItem.objects.filter(category__name='Main')
+		vegetarian = MenuItem.objects.filter(category__name='Vegetarian')
+		softdrinks = MenuItem.objects.filter(category__name='Soft Drinks')
+		beer = MenuItem.objects.filter(category__name='Beer')
+		wine = MenuItem.objects.filter(category__name='Wine')
+		softdrinks = MenuItem.objects.filter(category__name__contains='soft')
+		# pass into context
+		contect = {
+			'starters': starters,
+			'mains': mains,
+			'vegetarian': vegetarian,
+			'softdrinks': softdrinks,
+			'beer': beer,
+			'wine': wine,
+		}
+	
+		return render(request, 'accounts/menu.html', contect)
+
+	# def post(self, request, *args, **kwargs):
+	# 	order_items = {
+	# 		'items': [],
+	# 	} 
+	# 	items = request.POST.getlist('items[]')
+		
+	# 	for item in items:
+	# 		menu_item = MenuItem.objects.get(pk__conains=int(item))
+	# 		item_data = {
+	# 			'id': menu_item.pk
+	# 			'name': menu_item.name,
+	# 			'price': menu_item.price,
+	# 		}
+	# 		order_items['items'].append(item_data)
+
+	# 		price = 0 
+	# 		item_id = []
+
   
 class Order(View):
     def get(self, request, *args, **kwargs):

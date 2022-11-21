@@ -45,20 +45,19 @@ class Menu(View):
 	def get(self, request, *args, **kwargs):
 			
 		starters = MenuItem.objects.filter(category__name__contains='Starters')
-		
-		mains = MenuItem.objects.filter(category__name='Main')
-		vegetarian = MenuItem.objects.filter(category__name='Vegetarian')
-		softdrinks = MenuItem.objects.filter(category__name='Soft Drinks')
-		beer = MenuItem.objects.filter(category__name='Beer')
+		mains = MenuItem.objects.filter(category__name__contains='Main')
+		vegetarian = MenuItem.objects.filter(category__name__contains='Vegetarian')
+		noodles = MenuItem.objects.filter(category__name__contains='Noodles')
+		softdrinks = MenuItem.objects.filter(category__name__contains='Soft Drinks')
 		wine = MenuItem.objects.filter(category__name='Wine')
 		softdrinks = MenuItem.objects.filter(category__name__contains='soft')
 		# pass into context
 		contect = {
 			'starters': starters,
 			'mains': mains,
+			'noodels': noodles,
 			'vegetarian': vegetarian,
 			'softdrinks': softdrinks,
-			'beer': beer,
 			'wine': wine,
 		}
 	

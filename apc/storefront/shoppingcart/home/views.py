@@ -9,11 +9,6 @@ from ..authentication.models import Category, Order
 
 # Create your views here.
 
-def all_menu(request):
-	menu_test = MenuItem.objects.all()
-	return render(request, 'menu.html', {'menu':menu_test})
-	
-
 
 def say_hello(request):
 	return render(request,'home/homepage.html', { 'pagename' : 'home'})
@@ -47,12 +42,7 @@ class About(View):
 
 class Menu(View):
 	def get(self, request, *args, **kwargs):
-		return render(request,
-		'menu.html', {
-		"name": name,
-		"price": price,
-		"allergies": allergies,
-		})
+		return render(request, 'accounts/menu.html')
   
 class Order(View):
     def get(self, request, *args, **kwargs):

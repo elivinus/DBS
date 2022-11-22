@@ -1,192 +1,186 @@
 {% extends 'layouts/base.html' %}
 {% block content %}
-<div class="container mb-1">
-    <div class="row mt-1">
-        <div>
-            <form method="POST">
-                {% csrf_token %}
-                <p><h2>Starters</h2></p>
-                <div class="pt-8">
-                    {% for starter in starters %}
-                    <div class="row">
-                        <div class="col-md-1 col-sm-12">
-                            <img class src="{{ starter.image.url }}" width="250" height="200"/>
-                        </div>
-                        <div>
-                        </div>
-                        <div class="col-md-8 col-sm-12">
-                            <div class="d-flex flex-row">
-                                <div class="form-group form-check" >
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ starter.pk }}">
-                                    <label class="form-check-label">{{ starter.name }} </label>
-                                </div>
-                                <p>   </p>
-                                <p class=d-flex flex-row"font-weight-bold pl-5">&nbsp &nbsp€{{ starter.price }}</p>
-                            </div>
-                            <div align="left">
-                                <p>{{ starter.description }}</p>
-                            </div>
-                           <div>&nbsp</div>
-                        </div>
-                    </div>
-                    {% endfor %}
+<div>&nbsp</div>
+<div>&nbsp</div>
+
+<form method="POST">
+    {% csrf_token %}
+
+
+    <p><h2>&nbsp Starters</h2></p>
+    <div class="pt-8">
+    <div class='row card-group'>
+        {% for starter in starters %}
+          <div class="col-2">
+            <div class="card border " style="background-color:#ffffff;">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="{{ starter.image.url }}" class="img-fluid" />
+                    <a href="#!">
+                        <div class="mask" style="background-color: rgba(185, 180, 180, 0.15)"></div>
+                    </a>
                 </div>
-                <p><h2>Noodles</h2></p>
-                <div class="pt-8">
-                    {% for noodle in noodles %}
-                    <div class="row">
-                        <div class="col-md-1 col-sm-12">
-                            <img class src="{{ starter.image.url }}" width="250" height="200"/>
-                        </div>
-                        <div>
-                        </div>
-                        <div class="col-md-8 col-sm-12">
-                            <div class="d-flex flex-row">
-                                <div class="form-group form-check" >
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ noodle.pk }}">
-                                    <label class="form-check-label">{{ noodle.name }} </label>
-                                </div>
-                                <p>   </p>
-                                <p class=d-flex flex-row"font-weight-bold pl-5">&nbsp &nbsp€{{ noodle.price }}</p>
-                            </div>
-                            <div align="left">
-                                <p>{{ noodle.description }}</p>
-                            </div>
-                            <div>&nbsp</div>
-                        </div>
-                    </div>
-                    {% endfor %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ starter.name }}</h5>
+                    <p class="card-text">
+                        {{ starter.description }}
+                    </p>
+                    <small class="text-muted">€ {{ starter.price }} &nbsp &nbsp</small> <button type="button" class="btn btn-primary">Add to order</button>
                 </div>
-                <p><h2>Mains</h2></p>
-                <div class="pt-8">
-                    {% for main in mains %}
-                    <div class="row">
-                        <div class="col-md-1 col-sm-12">
-                            <img class src="{{ main.image.url }}" width="250" height="200"/>
-                        </div>
-                        <div>
-                        </div>
-                        <div class="col-md-8 col-sm-12">
-                            <div class="d-flex flex-row">
-                                <div class="form-group form-check" >
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ main.pk }}">
-                                    <label class="form-check-label">{{ main.name }} </label>
-                                </div>
-                                <p>   </p>
-                                <p class=d-flex flex-row"font-weight-bold pl-5">&nbsp &nbsp€{{ main.price }}</p>
-                            </div>
-                            <div align="left">
-                                <p>{{ main.description }}</p>
-                            </div>
-                            <div>&nbsp</div>
-                        </div>
-                    </div>
-                    {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+
+
+    <p><h2>&nbsp Noodles</h2></p>
+    <div class="pt-8">
+    <div class='row card-group'>
+        {% for noodle in noodles %}
+          <div class="col-2">
+            <div class="card border " style="background-color:#ffffff;">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="{{ noodle.image.url }}" class="img-fluid" />
+                    <a href="#!">
+                        <div class="mask" style="background-color: rgba(185, 180, 180, 0.15)"></div>
+                    </a>
                 </div>
-                <p><h2>Vegetarian</h2></p>
-                <div class="pt-8">
-                    {% for Vegetarian in Vegetarians %}
-                    <div class="row">
-                        <div class="col-md-1 col-sm-12">
-                            <img class src="{{ Vegetarian.image.url }}" width="250" height="200"/>
-                        </div>
-                        <div>
-                        </div>
-                        <div class="col-md-8 col-sm-12">
-                            <div class="d-flex flex-row">
-                                <div class="form-group form-check" >
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ Vegetarian.pk }}">
-                                    <label class="form-check-label">{{ Vegetarian.name }} </label>
-                                </div>
-                                <p>   </p>
-                                <p class=d-flex flex-row"font-weight-bold pl-5">&nbsp &nbsp€{{ Vegetarian.price }}</p>
-                            </div>
-                            <div align="left">
-                                <p>{{ Vegetarian.description }}</p>
-                            </div>
-                            <div>&nbsp</div>
-                        </div>
-                    </div>
-                    {% endfor %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ noodle.name }}</h5>
+                    <p class="card-text">
+                        {{ noodle.description }}
+                    </p>
+                    <small class="text-muted">€ {{ noodle.price }} &nbsp &nbsp</small> <button type="button" class="btn btn-primary">Add to order</button>
                 </div>
-                <p><h2>Desserts</h2></p>
-                <div class="pt-8">
-                    {% for dessert in desserts %}
-                    <div class="row">
-                        <div class="col-md-1 col-sm-12">
-                            <img class src="{{ dessert.image.url }}" width="250" height="200"/>
-                        </div>
-                        <div>
-                        </div>
-                        <div class="col-md-8 col-sm-12">
-                            <div class="d-flex flex-row">
-                                <div class="form-group form-check" >
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ dessert.pk }}">
-                                    <label class="form-check-label">{{ dessert.name }} </label>
-                                </div>
-                                <p>   </p>
-                                <p class=d-flex flex-row"font-weight-bold pl-5">&nbsp &nbsp€{{ dessert.price }}</p>
-                            </div>
-                            <div align="left">
-                                <p>{{ dessert.description }}</p>
-                            </div>
-                            <div>&nbsp</div>
-                        </div>
-                    </div>
-                    {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+
+    <p><h2>&nbsp Mains</h2></p>
+    <div class="pt-8">
+    <div class='row card-group'>
+        {% for main in mains %}
+          <div class="col-2">
+            <div class="card border " style="background-color:#ffffff;">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="{{ main.image.url }}" class="img-fluid" />
+                    <a href="#!">
+                        <div class="mask" style="background-color: rgba(185, 180, 180, 0.15)"></div>
+                    </a>
                 </div>
-                <p><h2>Soft Drinks</h2></p>
-                <div class="pt-8">
-                    {% for softdrink in softdrinks %}
-                    <div class="row">
-                        <div class="col-md-1 col-sm-12">
-                            <img class src="{{ softdrink.image.url }}" width="250" height="200"/>
-                        </div>
-                        <div>
-                        </div>
-                        <div class="col-md-8 col-sm-12">
-                            <div class="d-flex flex-row">
-                                <div class="form-group form-check" >
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ softdrink.pk }}">
-                                    <label class="form-check-label">{{ softdrink.name }} </label>
-                                </div>
-                                <p>   </p>
-                                <p class=d-flex flex-row"font-weight-bold pl-5">&nbsp &nbsp€{{ softdrink.price }}</p>
-                            </div>
-                            <div align="left">
-                                <p>{{ softdrink.description }}</p>
-                            </div>
-                            <div>&nbsp</div>
-                        </div>
-                    </div>
-                    {% endfor %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ main.name }}</h5>
+                    <p class="card-text">
+                        {{ main.description }}
+                    </p>
+                    <small class="text-muted">€ {{ main.price }} &nbsp &nbsp</small> <button type="button" class="btn btn-primary">Add to order</button>
                 </div>
-                <p><h2>Alcoholic Drinks</h2></p>
-                <div class="pt-8">
-                    {% for Wine in Wines %}
-                    <div class="row">
-                        <div class="col-md-1 col-sm-12">
-                            <img class src="{{ Wine.image.url }}" width="250" height="200"/>
-                        </div>
-                        <div>
-                        </div>
-                        <div class="col-md-8 col-sm-12">
-                            <div class="d-flex flex-row">
-                                <div class="form-group form-check" >
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ Wine.pk }}">
-                                    <label class="form-check-label">{{ Wine.name }} </label>
-                                </div>
-                                <p>   </p>
-                                <p class=d-flex flex-row"font-weight-bold pl-5">&nbsp &nbsp€{{ Wine.price }}</p>
-                            </div>
-                            <div align="left">
-                                <p>{{ Wine.description }}</p>
-                            </div>
-                            <div>&nbsp</div>
-                        </div>
-                    </div>
-                    {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+
+    <p><h2>&nbsp Vegetarian</h2></p>
+    <div class="pt-8">
+    <div class='row card-group'>
+        {% for vegetarian in vegetarians %}
+          <div class="col-2">
+            <div class="card border " style="background-color:#ffffff;">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="{{ vegetarian.image.url }}" class="img-fluid" />
+                    <a href="#!">
+                        <div class="mask" style="background-color: rgba(185, 180, 180, 0.15)"></div>
+                    </a>
                 </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ vegetarian.name }}</h5>
+                    <p class="card-text">
+                        {{ vegetarian.description }}
+                    </p>
+                    <small class="text-muted">€ {{ vegetarian.price }} &nbsp &nbsp</small> <button type="button" class="btn btn-primary">Add to order</button>
+                </div>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+
+
+    <p><h2>&nbsp Desserts</h2></p>
+    <div class="pt-8">
+    <div class='row card-group'>
+        {% for Dessert in Desserts %}
+          <div class="col-2">
+            <div class="card border " style="background-color:#ffffff;">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="{{ Dessert.image.url }}" class="img-fluid" />
+                    <a href="#!">
+                        <div class="mask" style="background-color: rgba(185, 180, 180, 0.15)"></div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ Dessert.name }}</h5>
+                    <p class="card-text">
+                        {{ Dessert.description }}
+                    </p>
+                    <small class="text-muted">€ {{ Dessert.price }} &nbsp &nbsp</small> <button type="button" class="btn btn-primary">Add to order</button>
+                </div>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+
+
+    <p><h2>&nbsp Soft Drinks</h2></p>
+    <div class="pt-8">
+    <div class='row card-group'>
+        {% for softdrink in softdrinks %}
+          <div class="col-2">
+            <div class="card border " style="background-color:#ffffff;">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="{{ softdrink.image.url }}" class="img-fluid" />
+                    <a href="#!">
+                        <div class="mask" style="background-color: rgba(185, 180, 180, 0.15)"></div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ softdrink.name }}</h5>
+                    <p class="card-text">
+                        {{ softdrink.description }}
+                    </p>
+                    <small class="text-muted">€ {{ softdrink.price }} &nbsp &nbsp</small> <button type="button" class="btn btn-primary">Add to order</button>
+                </div>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+
+
+    <p><h2>&nbsp Alcoholic Drinks</h2></p>
+    <div class="pt-8">
+    <div class='row card-group'>
+        {% for Wine in Wines %}
+          <div class="col-2">
+            <div class="card border " style="background-color:#ffffff;">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="{{ Wine.image.url }}" class="img-fluid" />
+                    <a href="#!">
+                        <div class="mask" style="background-color: rgba(185, 180, 180, 0.15)"></div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ Wine.name }}</h5>
+                    <p class="card-text">
+                        {{ Wine.description }}
+                    </p>
+                    <small class="text-muted">€ {{ Wine.price }} &nbsp &nbsp</small> <button type="button" class="btn btn-primary">Add to order</button>
+                </div>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+
+
+                  
 
             <button class="btn btn-dark mt-7">Place Order!</button>
         </form>

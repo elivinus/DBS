@@ -15,3 +15,4 @@ apc/storefront/env/*
 
 
 apc/storefront/shoppingcart/authentication/__pycache__/*
+apc/storefront/shoppingcart/home/__pycache__/*

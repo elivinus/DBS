@@ -180,8 +180,43 @@
     </div>
 
 
+    <div class="w-75 p-3" style="background-color: #eee">Width 75%</div>
+    <p><h2>&nbsp Testing</h2></p>
+    <div class="row row-cols-5 row-cols-md-4 mw-75">
+        {% for starter in starters %}
+        <div class="col mb-4">
+            
+            <div class="card h-100">
+            <!--Card image-->
+            
+            <div class="view overlay">
+              <img class="card-img-top" src="{{ starter.image.url }}"
+                alt="Card image cap">
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+      
+            <!--Card content-->
+            <div class="card-body">
+      
+              <!--Title-->
+              <h4 class="card-title">{{ starter.name }}</h4>
+              <!--Text-->
+              <p class="card-text">{{ starter.description }}</p>
+                <p>€ {{ starter.price }} &nbsp &nbsp</p>
+              <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+              <button type="button" class="btn btn-primary">Add to Order</button>
+      
+            </div>
+      
+          </div>
+          <!-- Card -->
+          
+        </div>
+        {% endfor %}
                   
-
+    </div>
             <button class="btn btn-dark mt-7">Place Order!</button>
         </form>
 </div>

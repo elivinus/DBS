@@ -50,8 +50,7 @@ class Signup(View):
 		return render(request, 'accounts/register.html')
 
 class Menu(View):
-	def get(self, request, *args, **kwargs):
-		category = Category.objects()		
+	def get(self, request, *args, **kwargs):	
 		starters = MenuItem.objects.filter(category__name__contains='Starters')
 		mains = MenuItem.objects.filter(category__name__contains='Main')
 		vegetarian = MenuItem.objects.filter(category__name__contains='Vegetarian')

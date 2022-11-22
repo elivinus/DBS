@@ -41,6 +41,10 @@ class About(View):
 	def get(self, request, *args, **kwargs):
 		return render(request, 'includes/about.html')
 
+class Cart(View):
+	def get(self, request, *args, **kwargs):
+		return render(request, 'accounts/cart.html')
+
 class Login(View):
 	def get(self, request, *args, **kwargs):
 		return render(request, 'accounts/login.html')

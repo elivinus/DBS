@@ -12,7 +12,6 @@ apc/storefront/storefront/__pycache__/
 apc/storefront/shoppingcart/__pycache__/
 apc/storefront/shoppingcart/authentication/__pycache__/
 apc/storefront/env/*
-
-
 apc/storefront/shoppingcart/authentication/__pycache__/*
 apc/storefront/shoppingcart/home/__pycache__/*
+apc/storefront/storefront/__pycache__/*

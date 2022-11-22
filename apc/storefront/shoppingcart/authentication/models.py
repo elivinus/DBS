@@ -6,18 +6,18 @@ class MenuItem(models.Model):
     name = models.CharField(max_length= 200)
     price = models.DecimalField(max_digits=5, decimal_places=2)
     description = models.CharField(max_length= 300)
-    image = models.ImageField(upload_to='menu_images/')
+    image = models.ImageField(upload_to='MEDIA_URL', blank=True, null=True)
     category = models.ManyToManyField('Category', related_name = 'MenuItem')
     alergies = models.CharField(max_length= 200, blank=True)
  #   orderDetailsId = models.OneToOneField('OrderDetail',on_delete=models.CASCADE,default=None)
     
-    def _str_(self):
+    def __str__(self):
          return self.name
     
 class Category(models.Model):
     name = models.CharField(max_length= 100)
         
-    def _str_(self):
+    def __str__(self):
         return self.name
 
 class Order(models.Model):
@@ -32,7 +32,7 @@ class Order(models.Model):
    # staffId = models.ForeignKey('Staff', on_delete=models.CASCADE)
     paymentStatus = models.BooleanField(default=False)
 
-    def _str_(self):
+    def __str__(self):
         return self.orderDate
 
 class Customer(models.Model):
@@ -45,7 +45,7 @@ class Customer(models.Model):
     createDate = models.DateTimeField(auto_now_add=True)
     userPassword = models.CharField(max_length=50)
     
-    def _str_(self):
+    def __str__(self):
         return self.name
     
 class DeliveryAgent(models.Model):
@@ -57,7 +57,7 @@ class DeliveryAgent(models.Model):
     postcode = models.CharField(max_length= 200)
     createDate = models.DateTimeField(auto_now_add=True)
     
-    def _str_(self):
+    def __str__(self):
         return self.name
     
 class Staff(models.Model):
@@ -70,7 +70,7 @@ class Staff(models.Model):
     createDate = models.DateTimeField(auto_now_add=True)
     userPassword = models.CharField(max_length=50)
     
-    def _str_(self):
+    def __str__(self):
         return self.name
 
 class OrderDetail(models.Model):
@@ -78,7 +78,7 @@ class OrderDetail(models.Model):
     createDate = models.DateTimeField(auto_now_add=True)
     orderID = models.ForeignKey('Order', on_delete=models.CASCADE)
 
-    def _str_(self):
+    def __str__(self):
         return self.totalAmount
     
 class Ingredint(models.Model):
@@ -88,7 +88,7 @@ class Ingredint(models.Model):
     recipeId = models.ForeignKey('Recipe', on_delete=models.CASCADE, default=None)
     supplierId = models.ForeignKey('Supplier', on_delete=models.CASCADE,default=None)
 
-    def _str_(self):
+    def __str__(self):
         return self.name
     
 class Recipe(models.Model):
@@ -97,7 +97,7 @@ class Recipe(models.Model):
     createDate = models.DateTimeField(auto_now_add=True)
     menuItemId = models.ForeignKey('MenuItem', on_delete=models.CASCADE)
 
-    def _str_(self):
+    def __str__(self):
         return self.name
     
 
@@ -109,5 +109,5 @@ class Supplier(models.Model):
     phoneNumber = models.IntegerField()
     createDate = models.DateTimeField(auto_now_add=True)
 
-    def _str_(self):
+    def __str__(self):
         return self.name

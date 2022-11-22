@@ -68,28 +68,9 @@ class Menu(View):
 			'softdrinks': softdrinks,
 			'wine': wine,
 		}
-	
 		return render(request, 'accounts/menu.html', contect)
 
-	# def post(self, request, *args, **kwargs):
-	# 	order_items = {
-	# 		'items': [],
-	# 	} 
-	# 	items = request.POST.getlist('items[]')
-		
-	# 	for item in items:
-	# 		menu_item = MenuItem.objects.get(pk__conains=int(item))
-	# 		item_data = {
-	# 			'id': menu_item.pk
-	# 			'name': menu_item.name,
-	# 			'price': menu_item.price,
-	# 		}
-	# 		order_items['items'].append(item_data)
-
-	# 		price = 0 
-	# 		item_id = []
-
-  
+	  
 class Order(View):
     def get(self, request, *args, **kwargs):
         drinks = MenuItem.objects.filter(category__name__contains('drinks'))

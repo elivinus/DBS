@@ -51,7 +51,7 @@ class Signup(View):
 
 class Menu(View):
 	def get(self, request, *args, **kwargs):
-			
+		category = Category.objects()		
 		starters = MenuItem.objects.filter(category__name__contains='Starters')
 		mains = MenuItem.objects.filter(category__name__contains='Main')
 		vegetarian = MenuItem.objects.filter(category__name__contains='Vegetarian')

@@ -45,6 +45,14 @@ class About(View):
 	def get(self, request, *args, **kwargs):
 		return render(request, 'includes/about.html')
 
+class Login(View):
+	def get(self, request, *args, **kwargs):
+		return render(request, 'accounts/login.html')
+
+class Signup(View):
+	def get(self, request, *args, **kwargs):
+		return render(request, 'accounts/register.html')
+
 class Menu(View):
 	def get(self, request, *args, **kwargs):
 		return render(request,

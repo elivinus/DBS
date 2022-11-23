@@ -28,6 +28,7 @@ urlpatterns = [
     path('_debug_/', include(debug_toolbar.urls)),
     path('', Index.as_view(), name='index'),
     path('about/', About.as_view(), name='about'),
+    path('menu/', Menu.as_view(), name='menu'),
     path('login/', Login.as_view(), name='login'),
     path('signup/', Signup.as_view(), name='signup'),
     path('contact/', Contact.as_view(), name='contact'),

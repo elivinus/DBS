@@ -57,19 +57,20 @@ class Menu(View):
 	def get(self, request, *args, **kwargs):	
 		starters = MenuItem.objects.filter(category__name__contains='Starters')
 		mains = MenuItem.objects.filter(category__name__contains='Main')
-		vegetarian = MenuItem.objects.filter(category__name__contains='Vegetarian')
 		noodles = MenuItem.objects.filter(category__name__contains='Noodles')
-		softdrinks = MenuItem.objects.filter(category__name__contains='Soft Drinks')
-		wine = MenuItem.objects.filter(category__name='Wine')
-		softdrinks = MenuItem.objects.filter(category__name__contains='soft')
+		softdrinks = MenuItem.objects.filter(category__name__contains='SoftDrinks')
+		wines = MenuItem.objects.filter(category__name__contains='Wine')
+		desserts = MenuItem.objects.filter(category__name__contains='Desserts')
+		vegetarian = MenuItem.objects.filter(category__name__contains='Vegetarian')
 		# pass into context
 		contect = {
 			'starters': starters,
 			'mains': mains,
-			'noodels': noodles,
-			'vegetarian': vegetarian,
+			'noodles': noodles,
+			'vegetarian': vegetarian,			
 			'softdrinks': softdrinks,
-			'wine': wine,
+			'wines': wines,
+			'desserts': desserts,
 		}
 		return render(request, 'accounts/menu.html', contect)
 

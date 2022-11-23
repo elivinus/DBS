@@ -13,7 +13,7 @@
             <div class="card h-100">
             <!--Card image-->
             <div class="view overlay">
-              <img class="card-img-top" src="{{ starter.image.url }}"
+              <img class="card-img-top" src="{{ starter.imageURL }}"
                 alt="Card image cap">
               <a href="#!">
                 <div class="mask rgba-white-slight"></div>
@@ -45,7 +45,7 @@
             <div class="card h-100">
             <!--Card image-->
             <div class="view overlay">
-              <img class="card-img-top" src="{{ starter.image.url }}"
+              <img class="card-img-top" src="{{ noodle.imageURL }}"
                 alt="Card image cap">
               <a href="#!">
                 <div class="mask rgba-white-slight"></div>
@@ -54,11 +54,11 @@
             <!--Card content-->
             <div class="card-body"> 
               <!--Title-->
-              <h4 class="card-title">{{ starter.name }}</h4>
+              <h4 class="card-title">{{ noodle.name }}</h4>
               <!--Text-->
-              <p class="card-text">{{ starter.description }}</p>
+              <p class="card-text">{{ noodle.description }}</p>
                 <div class="card-footer text-muted mt-auto">
-                    <p>€ {{ starter.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
+                    <p>€ {{ noodle.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
                 </div>
             </div>
           </div>
@@ -76,7 +76,7 @@
             <div class="card h-100">
             <!--Card image-->
             <div class="view overlay">
-              <img class="card-img-top" src="{{ main.image.url }}"
+              <img class="card-img-top" src="{{ main.imageURL }}"
                 alt="Card image cap">
               <a href="#!">
                 <div class="mask rgba-white-slight"></div>
@@ -103,12 +103,12 @@
 
     <p><h2>&nbsp Vegetarian</h2></p>
     <div class="row row-cols-5 row-cols-md-4 mw-75">
-        {% for vegetarian in vegetarians %}
+        {% for Vegetarian in vegetarian %}
         <div class="col mb-4">         
             <div class="card h-100">
             <!--Card image-->
             <div class="view overlay">
-              <img class="card-img-top" src="{{ vegetarian.image.url }}"
+              <img class="card-img-top" src="{{ Vegetarian.imageURL }}"
                 alt="Card image cap">
               <a href="#!">
                 <div class="mask rgba-white-slight"></div>
@@ -117,11 +117,11 @@
             <!--Card content-->
             <div class="card-body"> 
               <!--Title-->
-              <h4 class="card-title">{{ vegetarian.name }}</h4>
+              <h4 class="card-title">{{ Vegetarian.name }}</h4>
               <!--Text-->
-              <p class="card-text">{{ vegetarian.description }}</p>
+              <p class="card-text">{{ Vegetarian.description }}</p>
                 <div class="card-footer text-muted mt-auto">
-                    <p>€ {{ vegetarian.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
+                    <p>€ {{ Vegetarian.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
                 </div>
             </div>
           </div>
@@ -134,12 +134,12 @@
 
     <p><h2>&nbsp Desserts</h2></p>
     <div class="row row-cols-5 row-cols-md-4 mw-75">
-        {% for dessert in Desserts %}
+        {% for dessert in desserts %}
         <div class="col mb-4">         
             <div class="card h-100">
             <!--Card image-->
             <div class="view overlay">
-              <img class="card-img-top" src="{{ dessert.image.url }}"
+              <img class="card-img-top" src="{{ dessert.imageURL }}"
                 alt="Card image cap">
               <a href="#!">
                 <div class="mask rgba-white-slight"></div>
@@ -169,7 +169,7 @@
             <div class="card h-100">
             <!--Card image-->
             <div class="view overlay">
-              <img class="card-img-top" src="{{ dessert.image.url }}"
+              <img class="card-img-top" src="{{ softdrink.imageURL }}"
                 alt="Card image cap">
               <a href="#!">
                 <div class="mask rgba-white-slight"></div>
@@ -191,14 +191,14 @@
         {% endfor %}
     </div>
 
-    <p><h2>&nbsp Alcoholic Drinks</h2></p>
+    <p><h2>&nbsp Alcoholic beverages</h2></p>
     <div class="row row-cols-5 row-cols-md-4 mw-75">
-        {% for Wine in Wines %}
+        {% for wine in wines %}
         <div class="col mb-4">         
             <div class="card h-100">
             <!--Card image-->
             <div class="view overlay">
-              <img class="card-img-top" src="{{ Wine.image.url }}"
+              <img class="card-img-top" src="{{ wine.imageURL }}"
                 alt="Card image cap">
               <a href="#!">
                 <div class="mask rgba-white-slight"></div>
@@ -207,17 +207,19 @@
             <!--Card content-->
             <div class="card-body"> 
               <!--Title-->
-              <h4 class="card-title">{{ Wine.name }}</h4>
+              <h4 class="card-title">{{ wine.name }}</h4>
               <!--Text-->
-              <p class="card-text">{{ Wine.description }}</p>
+              <p class="card-text">{{ wine.description }}</p>
                 <div class="card-footer text-muted mt-auto">
-                    <p>€ {{ Wine.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
+                    <p>€ {{ wine.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
                 </div>
             </div>
           </div>
-          <!-- Card -->      
+          <!-- Card -->
+          
         </div>
         {% endfor %}
+                  
     </div>
 
 

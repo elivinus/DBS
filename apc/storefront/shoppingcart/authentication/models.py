@@ -10,10 +10,20 @@ class MenuItem(models.Model):
     category = models.ManyToManyField('Category', related_name = 'MenuItem')
     alergies = models.CharField(max_length= 200, blank=True)
  #   orderDetailsId = models.OneToOneField('OrderDetail',on_delete=models.CASCADE,default=None)
+
     
     def __str__(self):
          return self.name
-    
+ 
+    @property
+    def imageURL(self):
+        try:
+            url =self.image.url
+        except:
+            url = ''
+        return url
+
+
 class Category(models.Model):
     name = models.CharField(max_length= 100)
         

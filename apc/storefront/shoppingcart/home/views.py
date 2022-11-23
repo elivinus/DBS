@@ -41,6 +41,10 @@ class About(View):
 	def get(self, request, *args, **kwargs):
 		return render(request, 'includes/about.html')
 
+class Cart(View):
+	def get(self, request, *args, **kwargs):
+		return render(request, 'accounts/cart.html')
+
 class Login(View):
 	def get(self, request, *args, **kwargs):
 		return render(request, 'accounts/login.html')
@@ -50,46 +54,27 @@ class Signup(View):
 		return render(request, 'accounts/register.html')
 
 class Menu(View):
-	def get(self, request, *args, **kwargs):
-			
+	def get(self, request, *args, **kwargs):	
 		starters = MenuItem.objects.filter(category__name__contains='Starters')
 		mains = MenuItem.objects.filter(category__name__contains='Main')
-		vegetarian = MenuItem.objects.filter(category__name__contains='Vegetarian')
 		noodles = MenuItem.objects.filter(category__name__contains='Noodles')
-		softdrinks = MenuItem.objects.filter(category__name__contains='Soft Drinks')
-		wine = MenuItem.objects.filter(category__name='Wine')
-		softdrinks = MenuItem.objects.filter(category__name__contains='soft')
+		softdrinks = MenuItem.objects.filter(category__name__contains='SoftDrinks')
+		wines = MenuItem.objects.filter(category__name__contains='Wine')
+		desserts = MenuItem.objects.filter(category__name__contains='Desserts')
+		vegetarian = MenuItem.objects.filter(category__name__contains='Vegetarian')
 		# pass into context
 		contect = {
 			'starters': starters,
 			'mains': mains,
-			'noodels': noodles,
-			'vegetarian': vegetarian,
+			'noodles': noodles,
+			'vegetarian': vegetarian,			
 			'softdrinks': softdrinks,
-			'wine': wine,
+			'wines': wines,
+			'desserts': desserts,
 		}
-	
 		return render(request, 'accounts/menu.html', contect)
 
-	# def post(self, request, *args, **kwargs):
-	# 	order_items = {
-	# 		'items': [],
-	# 	} 
-	# 	items = request.POST.getlist('items[]')
-		
-	# 	for item in items:
-	# 		menu_item = MenuItem.objects.get(pk__conains=int(item))
-	# 		item_data = {
-	# 			'id': menu_item.pk
-	# 			'name': menu_item.name,
-	# 			'price': menu_item.price,
-	# 		}
-	# 		order_items['items'].append(item_data)
-
-	# 		price = 0 
-	# 		item_id = []
-
-  
+	  
 class Order(View):
     def get(self, request, *args, **kwargs):
         drinks = MenuItem.objects.filter(category__name__contains('drinks'))

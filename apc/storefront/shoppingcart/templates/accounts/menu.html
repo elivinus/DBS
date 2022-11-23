@@ -6,151 +6,217 @@
 <form method="POST">
     {% csrf_token %}
 
-
-    <p><h2>&nbsp Starters</h2></p>
-    <div class="pt-8">
-    <div class='row card-group'>
+    <p><h2>&nbsp Starter</h2></p>
+    <div class="row row-cols-5 row-cols-md-4 mw-75">
         {% for starter in starters %}
-          <div class="col-2">
-            <div class="card border " style="background-color:#ffffff;">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img src="{{ starter.image.url }}" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(185, 180, 180, 0.15)"></div>
-                    </a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ starter.name }}</h5>
-                    <p class="card-text">
-                        {{ starter.description }}
-                    </p>
-                    <small class="text-muted">€ {{ starter.price }} &nbsp &nbsp</small> <button type="button" class="btn btn-primary add-btn">Add to order</button>
+        <div class="col mb-4">         
+            <div class="card h-100">
+            <!--Card image-->
+            <div class="view overlay">
+              <img class="card-img-top" src="{{ starter.image.url }}"
+                alt="Card image cap">
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+            <!--Card content-->
+            <div class="card-body"> 
+              <!--Title-->
+              <h4 class="card-title">{{ starter.name }}</h4>
+              <!--Text-->
+              <p class="card-text">{{ starter.description }}</p>
+                <div class="card-footer text-muted mt-auto">
+                    <p>€ {{ starter.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
                 </div>
             </div>
           </div>
+          <!-- Card -->
+          
+        </div>
         {% endfor %}
+                  
     </div>
 
 
     <p><h2>&nbsp Noodles</h2></p>
-    <div class="pt-8">
-    <div class='row card-group'>
+    <div class="row row-cols-5 row-cols-md-4 mw-75">
         {% for noodle in noodles %}
-          <div class="col-2">
-            <div class="card border " style="background-color:#ffffff;">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img src="{{ noodle.image.url }}" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(185, 180, 180, 0.15)"></div>
-                    </a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ noodle.name }}</h5>
-                    <p class="card-text">
-                        {{ noodle.description }}
-                    </p>
-                    <small class="text-muted">€ {{ noodle.price }} &nbsp &nbsp</small> <button type="button" class="btn btn-primary add-btn">Add to order</button>
+        <div class="col mb-4">         
+            <div class="card h-100">
+            <!--Card image-->
+            <div class="view overlay">
+              <img class="card-img-top" src="{{ starter.image.url }}"
+                alt="Card image cap">
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+            <!--Card content-->
+            <div class="card-body"> 
+              <!--Title-->
+              <h4 class="card-title">{{ starter.name }}</h4>
+              <!--Text-->
+              <p class="card-text">{{ starter.description }}</p>
+                <div class="card-footer text-muted mt-auto">
+                    <p>€ {{ starter.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
                 </div>
             </div>
           </div>
+          <!-- Card -->
+          
+        </div>
         {% endfor %}
+                  
     </div>
 
     <p><h2>&nbsp Mains</h2></p>
-    <div class="pt-8">
-    <div class='row card-group'>
+    <div class="row row-cols-5 row-cols-md-4 mw-75">
         {% for main in mains %}
-          <div class="col-2">
-            <div class="card border " style="background-color:#ffffff;">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img src="{{ main.image.url }}" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(185, 180, 180, 0.15)"></div>
-                    </a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ main.name }}</h5>
-                    <p class="card-text">
-                        {{ main.description }}
-                    </p>
-                    <small class="text-muted">€ {{ main.price }} &nbsp &nbsp</small> <button type="button" class="btn btn-primary add-btn">Add to order</button>
+        <div class="col mb-4">         
+            <div class="card h-100">
+            <!--Card image-->
+            <div class="view overlay">
+              <img class="card-img-top" src="{{ main.image.url }}"
+                alt="Card image cap">
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+            <!--Card content-->
+            <div class="card-body"> 
+              <!--Title-->
+              <h4 class="card-title">{{ main.name }}</h4>
+              <!--Text-->
+              <p class="card-text">{{ main.description }}</p>
+                <div class="card-footer text-muted mt-auto">
+                    <p>€ {{ main.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
                 </div>
             </div>
           </div>
+          <!-- Card -->
+          
+        </div>
         {% endfor %}
+                  
     </div>
+
 
     <p><h2>&nbsp Vegetarian</h2></p>
-    <div class="pt-8">
-    <div class='row card-group'>
+    <div class="row row-cols-5 row-cols-md-4 mw-75">
         {% for vegetarian in vegetarians %}
-          <div class="col-2">
-            <div class="card border " style="background-color:#ffffff;">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img src="{{ vegetarian.image.url }}" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(185, 180, 180, 0.15)"></div>
-                    </a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ vegetarian.name }}</h5>
-                    <p class="card-text">
-                        {{ vegetarian.description }}
-                    </p>
-                    <small class="text-muted">€ {{ vegetarian.price }} &nbsp &nbsp</small> <button type="button" class="btn btn-primary add-btn">Add to order</button>
+        <div class="col mb-4">         
+            <div class="card h-100">
+            <!--Card image-->
+            <div class="view overlay">
+              <img class="card-img-top" src="{{ vegetarian.image.url }}"
+                alt="Card image cap">
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+            <!--Card content-->
+            <div class="card-body"> 
+              <!--Title-->
+              <h4 class="card-title">{{ vegetarian.name }}</h4>
+              <!--Text-->
+              <p class="card-text">{{ vegetarian.description }}</p>
+                <div class="card-footer text-muted mt-auto">
+                    <p>€ {{ vegetarian.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
                 </div>
             </div>
           </div>
+          <!-- Card -->
+          
+        </div>
         {% endfor %}
+                  
     </div>
 
-
     <p><h2>&nbsp Desserts</h2></p>
-    <div class="pt-8">
-    <div class='row card-group'>
-        {% for Dessert in Desserts %}
-          <div class="col-2">
-            <div class="card border " style="background-color:#ffffff;">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img src="{{ Dessert.image.url }}" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(185, 180, 180, 0.15)"></div>
-                    </a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ Dessert.name }}</h5>
-                    <p class="card-text">
-                        {{ Dessert.description }}
-                    </p>
-                    <small class="text-muted">€ {{ Dessert.price }} &nbsp &nbsp</small> <button type="button" class="btn btn-primary add-btn">Add to order</button>
+    <div class="row row-cols-5 row-cols-md-4 mw-75">
+        {% for dessert in Desserts %}
+        <div class="col mb-4">         
+            <div class="card h-100">
+            <!--Card image-->
+            <div class="view overlay">
+              <img class="card-img-top" src="{{ dessert.image.url }}"
+                alt="Card image cap">
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+            <!--Card content-->
+            <div class="card-body"> 
+              <!--Title-->
+              <h4 class="card-title">{{ dessert.name }}</h4>
+              <!--Text-->
+              <p class="card-text">{{ dessert.description }}</p>
+                <div class="card-footer text-muted mt-auto">
+                    <p>€ {{ dessert.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
                 </div>
             </div>
           </div>
+          <!-- Card -->      
+        </div>
         {% endfor %}
     </div>
 
 
     <p><h2>&nbsp Soft Drinks</h2></p>
-    <div class="pt-8">
-    <div class='row card-group'>
+    <div class="row row-cols-5 row-cols-md-4 mw-75">
         {% for softdrink in softdrinks %}
-          <div class="col-2">
-            <div class="card border " style="background-color:#ffffff;">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img src="{{ softdrink.image.url }}" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(185, 180, 180, 0.15)"></div>
-                    </a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ softdrink.name }}</h5>
-                    <p class="card-text">
-                        {{ softdrink.description }}
-                    </p>
-                    <small class="text-muted">€ {{ softdrink.price }} &nbsp &nbsp</small> <button type="button" class="btn btn-primary add-btn">Add to order</button>
+        <div class="col mb-4">         
+            <div class="card h-100">
+            <!--Card image-->
+            <div class="view overlay">
+              <img class="card-img-top" src="{{ dessert.image.url }}"
+                alt="Card image cap">
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+            <!--Card content-->
+            <div class="card-body"> 
+              <!--Title-->
+              <h4 class="card-title">{{ softdrink.name }}</h4>
+              <!--Text-->
+              <p class="card-text">{{ softdrink.description }}</p>
+                <div class="card-footer text-muted mt-auto">
+                    <p>€ {{ softdrink.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
                 </div>
             </div>
           </div>
+          <!-- Card -->      
+        </div>
+        {% endfor %}
+    </div>
+
+    <p><h2>&nbsp Alcoholic Drinks</h2></p>
+    <div class="row row-cols-5 row-cols-md-4 mw-75">
+        {% for Wine in Wines %}
+        <div class="col mb-4">         
+            <div class="card h-100">
+            <!--Card image-->
+            <div class="view overlay">
+              <img class="card-img-top" src="{{ Wine.image.url }}"
+                alt="Card image cap">
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+            <!--Card content-->
+            <div class="card-body"> 
+              <!--Title-->
+              <h4 class="card-title">{{ Wine.name }}</h4>
+              <!--Text-->
+              <p class="card-text">{{ Wine.description }}</p>
+                <div class="card-footer text-muted mt-auto">
+                    <p>€ {{ Wine.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
+                </div>
+            </div>
+          </div>
+          <!-- Card -->      
+        </div>
         {% endfor %}
     </div>
 
@@ -180,43 +246,6 @@
     </div>
 
 
-    <div class="w-75 p-3" style="background-color: #eee">Width 75%</div>
-    <p><h2>&nbsp Testing</h2></p>
-    <div class="row row-cols-5 row-cols-md-4 mw-75">
-        {% for starter in starters %}
-        <div class="col mb-4">
-            
-            <div class="card h-100">
-            <!--Card image-->
-            
-            <div class="view overlay">
-              <img class="card-img-top" src="{{ starter.image.url }}"
-                alt="Card image cap">
-              <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
-      
-            <!--Card content-->
-            <div class="card-body">
-      
-              <!--Title-->
-              <h4 class="card-title">{{ starter.name }}</h4>
-              <!--Text-->
-              <p class="card-text">{{ starter.description }}</p>
-            
-                <div class="card-footer text-muted mt-auto">
-                    <p>€ {{ starter.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
-                </div>
-            </div>
-      
-          </div>
-          <!-- Card -->
-          
-        </div>
-        {% endfor %}
-                  
-    </div>
             <button class="btn btn-dark mt-7">Place Order!</button>
         </form>
 </div>

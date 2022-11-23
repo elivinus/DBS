@@ -5,7 +5,7 @@ from django.views import View
 from ..authentication.models import MenuItem
 from ..authentication.forms import CreateNewCustomer
 from ..authentication.models import Customer, OrderDetail
-from ..authentication.models import Category, Order
+from ..authentication.models import Category
 
 
 # Create your views here.
@@ -54,33 +54,43 @@ class Signup(View):
 		return render(request, 'accounts/register.html')
 
 class Menu(View):
-	def get(self, request, *args, **kwargs):	
+	def get(self, request, *args, **kwargs):
 		starters = MenuItem.objects.filter(category__name__contains='Starters')
 		mains = MenuItem.objects.filter(category__name__contains='Main')
-		noodles = MenuItem.objects.filter(category__name__contains='Noodles')
-		softdrinks = MenuItem.objects.filter(category__name__contains='SoftDrinks')
-		wines = MenuItem.objects.filter(category__name__contains='Wine')
-		desserts = MenuItem.objects.filter(category__name__contains='Desserts')
 		vegetarian = MenuItem.objects.filter(category__name__contains='Vegetarian')
+		noodles = MenuItem.objects.filter(category__name__contains='Noodles')
+		softdrinks = MenuItem.objects.filter(category__name__contains='Soft Drinks')
+		wine = MenuItem.objects.filter(category__name='Wine')
+		softdrinks = MenuItem.objects.filter(category__name__contains='soft')
 		# pass into context
-		contect = {
+		context = {
 			'starters': starters,
 			'mains': mains,
-			'noodles': noodles,
-			'vegetarian': vegetarian,			
+			'noodels': noodles,
+			'vegetarian': vegetarian,
 			'softdrinks': softdrinks,
-			'wines': wines,
-			'desserts': desserts,
+			'wine': wine,
 		}
-		return render(request, 'accounts/menu.html', contect)
+	
+		return render(request, 'accounts/menu.html', context)
 
-	  
-class Order(View):
-    def get(self, request, *args, **kwargs):
-        drinks = MenuItem.objects.filter(category__name__contains('drinks'))
-        appetizer = MenuItem.objects.filter(category__name__contains('appetizer'))
-        fries = MenuItem.objects.filter(category__name__contains('fries'))
-    
+	# def post(self, request, *args, **kwargs):
+	# 	order_items = {
+	# 		'items': [],
+	# 	} 
+	# 	items = request.POST.getlist('items[]')
+		
+	# 	for item in items:
+	# 		menu_item = MenuItem.objects.get(pk__conains=int(item))
+	# 		item_data = {
+	# 			'id': menu_item.pk
+	# 			'name': menu_item.name,
+	# 			'price': menu_item.price,
+	# 		}
+	# 		order_items['items'].append(item_data)
+
+	# 		price = 0 
+	# 		item_id = []
 
 class Contact(View):
 	def get(self, request, *args, **kwargs):

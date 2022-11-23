@@ -17,3 +17,4 @@ apc/storefront/shoppingcart/home/__pycache__/*
 apc/storefront/storefront/__pycache__/*
 apc/storefront/shoppingcart/home/__pycache__/views.cpython-311.pyc
 apc/storefront/storefront/__pycache__/urls.cpython-311.pyc
+apc/env/*

@@ -2,20 +2,20 @@ console.log('testing')
 
 
 
-var updateBtn = document.getElementsByClassName('update-cart');
+var updateItem = document.getElementsByClassName('update-cart');
 // loop through all the buttons
-for (var i = 0; i < updateBtn.length; i++) {
-    updateBtn[i].addEventListener('click', function(){
-        var menuname = this.dataset.menu;
+for (var i = 0; i < updateItem.length; i++) {
+    updateItem[i].addEventListener('click', function(){
+        var menuid = this.dataset.menuid;
         var action = this.dataset.action;
-        console.log('menuname:', menuname, 'action:', action)
+        console.log('menuID:', menuid, 'action:', action)
         console.log('USER:', user)
 
  
         if (user == 'AnonymousUser'){
             console.log('not authenticated')
         }else{
-            updateUserOrder(menuname, action)
+            updateUserOrder(menuid, action)
         }
 
 
@@ -24,7 +24,7 @@ for (var i = 0; i < updateBtn.length; i++) {
 }
 
 // function to update the order
-function updateUserOrder(menuname, action){
+function updateUserOrder(menuid, action){
     console.log('user is authenticated, sending data...')
 
     var url = '/update_Item/'
@@ -35,7 +35,7 @@ function updateUserOrder(menuname, action){
             'Content-Type':'application/json',
             'X-CSRFToken':csrftoken,
         },
-        body:JSON.stringify({'menuname':menuname, 'action':action})
+        body:JSON.stringify({'menuid':menuid, 'action':action})
     })
     
     .then((response) => {

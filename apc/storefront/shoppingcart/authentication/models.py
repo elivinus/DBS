@@ -30,20 +30,6 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class Order(models.Model):
-    orderDate = models.DateTimeField(auto_now_add=True)
-    totalAmount = models.FloatField()
-    orderStatus = models.CharField(max_length=50)
-    createDate = models.DateTimeField(auto_now_add=True)
-    transactionId = models.CharField(max_length=50,null=True)
-    customerId = models.ForeignKey('Customer', on_delete=models.SET_NULL, null=True, blank=True)
-    deliveryAgentId = models.ForeignKey('DeliveryAgent', on_delete=models.SET_NULL, null=True, blank=True)
-    staffId = models.ForeignKey('Staff', on_delete=models.SET_NULL, null=True, blank=True)
-    paymentStatus = models.BooleanField(default=False)
-
-    def __str__(self):
-        return str(self.id)
-
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length= 200, null=True)
@@ -57,7 +43,22 @@ class Customer(models.Model):
     
     def __str__(self):
         return self.name
-    
+
+class Order(models.Model):
+    orderDate = models.DateTimeField(auto_now_add=True)
+    totalAmount = models.FloatField(null=True, blank=True)
+    orderStatus = models.CharField(max_length=50, null=True, blank=True)
+    createDate = models.DateTimeField(auto_now_add=True)
+    transactionId = models.CharField(max_length=50,null=True)
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
+    deliveryAgentId = models.ForeignKey('DeliveryAgent', on_delete=models.SET_NULL, null=True, blank=True)
+    staffId = models.ForeignKey('Staff', on_delete=models.SET_NULL, null=True, blank=True)
+    paymentStatus = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.id)
+
+
 class DeliveryAgent(models.Model):
     name = models.CharField(max_length= 200)
     emailAddress = models.EmailField()
@@ -88,11 +89,10 @@ class OrderDetail(models.Model):
     quantity = models.IntegerField(default=0, null=True, blank=True)
     totalAmount = models.FloatField(default=0.0, null=True, blank=True)
     createDate = models.DateTimeField(auto_now_add=True)
-    menuItemId = models.ForeignKey('MenuItem',on_delete=models.CASCADE, null=True, blank=True)
-    orderId = models.ForeignKey('Order', on_delete=models.CASCADE,null=True, blank=True)
+    menuItem = models.ForeignKey(MenuItem,on_delete=models.CASCADE, null=True, blank=True)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE,null=True, blank=True)
 
-    def __str__(self):
-        return self.totalAmount
+ 
     
 class Ingredint(models.Model):
     name = models.CharField(max_length= 200)

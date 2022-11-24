@@ -1,11 +1,12 @@
 
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.views import View
 from ..authentication.models import MenuItem
 from ..authentication.forms import CreateNewCustomer
 from ..authentication.models import Customer, OrderDetail
 from ..authentication.models import Category, Order
+
 
 
 # Create your views here.
@@ -94,3 +95,5 @@ class Gallery(View):
 	def get(self, request, *args, **kwargs):
 		return render(request, 'includes/gallery.html')
 
+def updateItem(request):
+	return JsonResponse('added to menu', safe=False)

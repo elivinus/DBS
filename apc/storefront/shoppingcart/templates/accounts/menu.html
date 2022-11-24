@@ -26,7 +26,8 @@
               <!--Text-->
               <p class="card-text">{{ starter.description }}</p>
                 <div class="card-footer text-muted mt-auto">
-                    <p>€ {{ starter.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
+                    <p>€ {{ starter.price }} &nbsp &nbsp
+                      <button data-menu={{starter.name}} data-action="add" type="button" class="btn btn-primary add-btn update-cart">Add to Order</button></p>        
                 </div>
             </div>
           </div>

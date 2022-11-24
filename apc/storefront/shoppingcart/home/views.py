@@ -6,6 +6,9 @@ from ..authentication.models import MenuItem
 from ..authentication.forms import CreateNewCustomer
 from ..authentication.models import Customer, OrderDetail
 from ..authentication.models import Category, Order
+from ..authentication.models import Order, OrderDetail
+
+import json
 
 
 
@@ -80,11 +83,11 @@ def cart(request):
 	return render(request, 'accounts/cart.html')	 
 	
 	 
-class Order(View):
-    def get(self, request, *args, **kwargs):
-        drinks = MenuItem.objects.filter(category__name__contains('drinks'))
-        appetizer = MenuItem.objects.filter(category__name__contains('appetizer'))
-        fries = MenuItem.objects.filter(category__name__contains('fries'))
+# class Order1(View):
+#     def get(self, request, *args, **kwargs):
+#         drinks = MenuItem.objects.filter(category__name__contains('drinks'))
+#         appetizer = MenuItem.objects.filter(category__name__contains('appetizer'))
+#         fries = MenuItem.objects.filter(category__name__contains('fries'))
     
 
 class Contact(View):
@@ -96,4 +99,27 @@ class Gallery(View):
 		return render(request, 'includes/gallery.html')
 
 def updateItem(request):
+	data = json.loads(request.body)
+	menuid = data['menuid']
+	action = data['action']
+	print('Action:', action)
+	print('MenuID:', menuid)
+
+	customer = request.user.customer
+	menu = MenuItem.objects.get(id=menuid)
+	order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
+	
+	orderDetail, created = OrderDetail.objects.get_or_create(order=order, id=menuid)
+
+	if action == 'add':
+		orderDetail.quantity = (orderDetail.quantity + 1)
+	elif action == 'remove':
+		orderDetail.quantity = (orderDetail.quantity - 1)
+	
+	orderDetail.save()
+
+	if orderDetail.quantity <= 0:
+		orderDetail.delete()
+
 	return JsonResponse('added to menu', safe=False)
+

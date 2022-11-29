@@ -78,16 +78,20 @@ class Menu(View):
 		}
 		return render(request, 'accounts/menu.html', contect)
 
-def cart(request):
+class cart(View):
+	def cart(request):
+		if request.user.is_authenticated:
+			customer = request.user.customer
+			order, created = Order.objects.get_or_create(customer=customer, complete=False)
+			items = order.orderdetail_set.all()
+		else:
+			#guest cart
+			items = []
 
-	return render(request, 'accounts/cart.html')	 
+		context = {'items':items}
+		return render(request, 'store/cart.html', context)
 	
-	 
-# class Order1(View):
-#     def get(self, request, *args, **kwargs):
-#         drinks = MenuItem.objects.filter(category__name__contains('drinks'))
-#         appetizer = MenuItem.objects.filter(category__name__contains('appetizer'))
-#         fries = MenuItem.objects.filter(category__name__contains('fries'))
+	
     
 
 class Contact(View):

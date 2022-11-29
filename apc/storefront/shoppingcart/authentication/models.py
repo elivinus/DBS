@@ -89,10 +89,9 @@ class OrderDetail(models.Model):
     quantity = models.IntegerField(default=0, null=True, blank=True)
     totalAmount = models.FloatField(default=0.0, null=True, blank=True)
     createDate = models.DateTimeField(auto_now_add=True)
-    menuItem = models.ForeignKey(MenuItem,on_delete=models.CASCADE, null=True, blank=True)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE,null=True, blank=True)
+    menuItem = models.ForeignKey(MenuItem, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL,null=True)
 
- 
     
 class Ingredint(models.Model):
     name = models.CharField(max_length= 200)

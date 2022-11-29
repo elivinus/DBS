@@ -109,7 +109,7 @@ def updateItem(request):
 	menu = MenuItem.objects.get(id=menuid)
 	order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
 	
-	orderDetail, created = OrderDetail.objects.get_or_create(order=order, id=menuid)
+	orderDetail, created = OrderDetail.objects.get_or_create(order=order, menuItem_id=menuid)
 
 	if action == 'add':
 		orderDetail.quantity = (orderDetail.quantity + 1)

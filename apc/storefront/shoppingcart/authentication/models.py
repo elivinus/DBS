@@ -57,6 +57,19 @@ class Order(models.Model):
 
     def __str__(self):
         return str(self.id)
+    
+    @property
+    def get_cart_total(self):
+        orderitems = self.orderdetail_set.all()
+        total = sum([item.get_total for item in orderitems])
+        return total
+    
+    @property
+    def get_cart_items(self):
+        orderitems = self.orderdetail_set.all()
+        total = sum([item.quantity for item in orderitems])
+        return total
+
 
 
 class DeliveryAgent(models.Model):
@@ -91,6 +104,11 @@ class OrderDetail(models.Model):
     createDate = models.DateTimeField(auto_now_add=True)
     menuItem = models.ForeignKey(MenuItem, on_delete=models.SET_NULL, null=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL,null=True)
+
+    @property
+    def get_total(self):
+        total = self.menuItem.price * self.quantity
+        return total
 
     
 class Ingredint(models.Model):

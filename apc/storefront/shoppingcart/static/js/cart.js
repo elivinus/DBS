@@ -43,6 +43,7 @@ function updateUserOrder(menuid, action){
     })
 
     .then((data) => {
+        console.log('data:', data)
         location.reload()
     })
     

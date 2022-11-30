@@ -45,9 +45,6 @@ class About(View):
 	def get(self, request, *args, **kwargs):
 		return render(request, 'includes/about.html')
 
-class Cart(View):
-	def get(self, request, *args, **kwargs):
-		return render(request, 'accounts/cart.html')
 
 class Login(View):
 	def get(self, request, *args, **kwargs):
@@ -78,21 +75,21 @@ class Menu(View):
 		}
 		return render(request, 'accounts/menu.html', contect)
 
-class cart(View):
-	def cart(request):
+class Cart(View):
+	def get(self, request):	
 		if request.user.is_authenticated:
 			customer = request.user.customer
-			order, created = Order.objects.get_or_create(customer=customer, complete=False)
+			order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
 			items = order.orderdetail_set.all()
 		else:
 			#guest cart
 			items = []
+			order = {'get_cart_total':0, 'get_cart_items':0}
 
-		context = {'items':items}
-		return render(request, 'store/cart.html', context)
-	
-	
-    
+		context = {'items':items, 'order':order}
+		return render(request, 'accounts/cart.html', context)
+
+
 
 class Contact(View):
 	def get(self, request, *args, **kwargs):

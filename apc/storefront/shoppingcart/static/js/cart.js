@@ -25,7 +25,7 @@ for (var i = 0; i < updateItem.length; i++) {
 
 // function to update the order
 function updateUserOrder(menuid, action){
-    console.log('user is authenticated, sending data...')
+    console.log('user is authenticated, sending data')
 
     var url = '/update_Item/'
 

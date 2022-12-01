@@ -38,7 +38,6 @@
                   
     </div>
 
-
     <p><h2>&nbsp Noodles</h2></p>
     <div class="row row-cols-5 row-cols-md-4 mw-75">
         {% for noodle in noodles %}
@@ -59,7 +58,8 @@
               <!--Text-->
               <p class="card-text">{{ noodle.description }}</p>
                 <div class="card-footer text-muted mt-auto">
-                    <p>€ {{ noodle.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
+                    <p>€ {{ noodle.price }} &nbsp &nbsp
+                      <button data-menuid={{noodle.id}} data-action="add" type="button" class="btn btn-primary add-btn update-cart">Add to Order</button></p>        
                 </div>
             </div>
           </div>
@@ -70,6 +70,7 @@
                   
     </div>
 
+    
     <p><h2>&nbsp Mains</h2></p>
     <div class="row row-cols-5 row-cols-md-4 mw-75">
         {% for main in mains %}
@@ -90,7 +91,8 @@
               <!--Text-->
               <p class="card-text">{{ main.description }}</p>
                 <div class="card-footer text-muted mt-auto">
-                    <p>€ {{ main.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
+                    <p>€ {{ main.price }} &nbsp &nbsp
+                      <button data-menuid={{main.id}} data-action="add" type="button" class="btn btn-primary add-btn update-cart">Add to Order</button></p>        
                 </div>
             </div>
           </div>
@@ -100,8 +102,7 @@
         {% endfor %}
                   
     </div>
-
-
+  
     <p><h2>&nbsp Vegetarian</h2></p>
     <div class="row row-cols-5 row-cols-md-4 mw-75">
         {% for Vegetarian in vegetarian %}
@@ -122,7 +123,8 @@
               <!--Text-->
               <p class="card-text">{{ Vegetarian.description }}</p>
                 <div class="card-footer text-muted mt-auto">
-                    <p>€ {{ Vegetarian.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
+                    <p>€ {{ Vegetarian.price }} &nbsp &nbsp
+                      <button data-menuid={{Vegetarian.id}} data-action="add" type="button" class="btn btn-primary add-btn update-cart">Add to Order</button></p>        
                 </div>
             </div>
           </div>
@@ -132,7 +134,7 @@
         {% endfor %}
                   
     </div>
-
+ 
     <p><h2>&nbsp Desserts</h2></p>
     <div class="row row-cols-5 row-cols-md-4 mw-75">
         {% for dessert in desserts %}
@@ -153,16 +155,18 @@
               <!--Text-->
               <p class="card-text">{{ dessert.description }}</p>
                 <div class="card-footer text-muted mt-auto">
-                    <p>€ {{ dessert.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
+                    <p>€ {{ dessert.price }} &nbsp &nbsp
+                      <button data-menuid={{dessert.id}} data-action="add" type="button" class="btn btn-primary add-btn update-cart">Add to Order</button></p>        
                 </div>
             </div>
           </div>
-          <!-- Card -->      
+          <!-- Card -->
+          
         </div>
         {% endfor %}
+                  
     </div>
-
-
+ 
     <p><h2>&nbsp Soft Drinks</h2></p>
     <div class="row row-cols-5 row-cols-md-4 mw-75">
         {% for softdrink in softdrinks %}
@@ -183,15 +187,18 @@
               <!--Text-->
               <p class="card-text">{{ softdrink.description }}</p>
                 <div class="card-footer text-muted mt-auto">
-                    <p>€ {{ softdrink.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
+                    <p>€ {{ softdrink.price }} &nbsp &nbsp
+                      <button data-menuid={{softdrink.id}} data-action="add" type="button" class="btn btn-primary add-btn update-cart">Add to Order</button></p>        
                 </div>
             </div>
           </div>
-          <!-- Card -->      
+          <!-- Card -->
+          
         </div>
         {% endfor %}
+                  
     </div>
-
+ 
     <p><h2>&nbsp Alcoholic beverages</h2></p>
     <div class="row row-cols-5 row-cols-md-4 mw-75">
         {% for wine in wines %}
@@ -212,7 +219,8 @@
               <!--Text-->
               <p class="card-text">{{ wine.description }}</p>
                 <div class="card-footer text-muted mt-auto">
-                    <p>€ {{ wine.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
+                    <p>€ {{ wine.price }} &nbsp &nbsp
+                      <button data-menuid={{wine.id}} data-action="add" type="button" class="btn btn-primary add-btn update-cart">Add to Order</button></p>        
                 </div>
             </div>
           </div>
@@ -222,6 +230,8 @@
         {% endfor %}
                   
     </div>
+
+
 
 
     <p><h2>&nbsp Alcoholic Drinks</h2></p>

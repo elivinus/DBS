@@ -7,7 +7,6 @@ from ..authentication.forms import CreateNewCustomer
 from ..authentication.models import Customer, OrderDetail
 from ..authentication.models import Category, Order
 from ..authentication.models import Order, OrderDetail
-
 import json
 
 
@@ -114,10 +113,15 @@ def updateItem(request):
 
 	if action == 'add':
 		orderDetail.quantity = (orderDetail.quantity + 1)
+		
+		print('added to cart')
 	elif action == 'remove':
 		orderDetail.quantity = (orderDetail.quantity - 1)
+		
+		print('removed from cart')
 	
 	orderDetail.save()
+	print('saved')
 
 	if orderDetail.quantity <= 0:
 		orderDetail.delete()

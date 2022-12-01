@@ -41,8 +41,8 @@
         <div class="col-sm"><strong>{{ item.menuItem }}</strong></div>
         <div class="col-sm">€{{ item.menuItem.price }}</div>
         <div class="col-sm">{{ item.quantity }}</div>
-        <div class="col-sm"><img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart" src="/static/images/up_triangle.png" alt="UP" width="10" height="10">&nbsp
-          <img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart" src="/static/images/down_triangle.png" alt="DOWN" width="10" height="10" ></div>
+        <div class="col-sm"><img data-menuid="{{item.id}}" data-action="add" class="chg-quantity update-cart" src="/static/images/up_triangle.png" alt="UP" width="10" height="10">&nbsp
+          <img data-menuid="{{item.id}}" data-action="remove" class="chg-quantity update-cart" src="/static/images/down_triangle.png" alt="DOWN" width="10" height="10" ></div>
         <div class="col-sm">{{item.get_total|floatformat:2}}</div>
       </div>
       <div class="row"> &nbsp</div>

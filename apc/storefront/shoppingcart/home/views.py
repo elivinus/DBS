@@ -108,20 +108,33 @@ def updateItem(request):
 	customer = request.user.customer
 	menu = MenuItem.objects.get(id=menuid)
 	order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
-	
 	orderDetail, created = OrderDetail.objects.get_or_create(order=order, menuItem_id=menuid)
 
 	if action == 'add':
 		orderDetail.quantity = (orderDetail.quantity + 1)
-		
 	elif action == 'remove':
 		orderDetail.quantity = (orderDetail.quantity - 1)
-		
-	orderDetail.save()
 	
+	orderDetail.save()
 
 	if orderDetail.quantity <= 0:
 		orderDetail.delete()
 
 	return JsonResponse('added to menu', safe=False)
 
+class checkout(View):
+	def get(self, request):
+		if request.user.is_authenticated:
+			customer = request.user.customer
+			order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
+			items = order.orderdetail_set.all()
+			cartitems = order.get_cart_items
+		else:
+			#guest cart
+			items = []
+			order = {'get_cart_total':0, 'get_cart_items':0}
+			cartitems = order['get_cart_items']
+
+		context = {'items':items, 'order':order, 'cartitems':cartitems}
+		return render(request, 'accounts/checkout.html', context)
+	

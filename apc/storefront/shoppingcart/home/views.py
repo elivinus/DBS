@@ -114,14 +114,11 @@ def updateItem(request):
 	if action == 'add':
 		orderDetail.quantity = (orderDetail.quantity + 1)
 		
-		print('added to cart')
 	elif action == 'remove':
 		orderDetail.quantity = (orderDetail.quantity - 1)
 		
-		print('removed from cart')
-	
 	orderDetail.save()
-	print('saved')
+	
 
 	if orderDetail.quantity <= 0:
 		orderDetail.delete()

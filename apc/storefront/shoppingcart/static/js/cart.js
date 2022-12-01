@@ -16,6 +16,7 @@ for (var i = 0; i < updateItem.length; i++) {
             console.log('not authenticated')
         }else{
             updateUserOrder(menuid, action)
+            
         }
 
 

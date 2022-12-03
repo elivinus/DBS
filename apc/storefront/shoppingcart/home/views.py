@@ -7,7 +7,6 @@ from ..authentication.forms import CreateNewCustomer
 from ..authentication.models import Customer, OrderDetail
 from ..authentication.models import Category, Order
 from ..authentication.models import Order, OrderDetail
-
 import json
 
 
@@ -45,9 +44,6 @@ class About(View):
 	def get(self, request, *args, **kwargs):
 		return render(request, 'includes/about.html')
 
-class Cart(View):
-	def get(self, request, *args, **kwargs):
-		return render(request, 'accounts/cart.html')
 
 class Login(View):
 	def get(self, request, *args, **kwargs):
@@ -78,17 +74,21 @@ class Menu(View):
 		}
 		return render(request, 'accounts/menu.html', contect)
 
-def cart(request):
+class Cart(View):
+	def get(self, request):	
+		if request.user.is_authenticated:
+			customer = request.user.customer
+			order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
+			items = order.orderdetail_set.all()
+		else:
+			#guest cart
+			items = []
+			order = {'get_cart_total':0, 'get_cart_items':0}
 
-	return render(request, 'accounts/cart.html')	 
-	
-	 
-# class Order1(View):
-#     def get(self, request, *args, **kwargs):
-#         drinks = MenuItem.objects.filter(category__name__contains('drinks'))
-#         appetizer = MenuItem.objects.filter(category__name__contains('appetizer'))
-#         fries = MenuItem.objects.filter(category__name__contains('fries'))
-    
+		context = {'items':items, 'order':order}
+		return render(request, 'accounts/cart.html', context)
+
+
 
 class Contact(View):
 	def get(self, request, *args, **kwargs):
@@ -108,8 +108,7 @@ def updateItem(request):
 	customer = request.user.customer
 	menu = MenuItem.objects.get(id=menuid)
 	order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
-	
-	orderDetail, created = OrderDetail.objects.get_or_create(order=order, id=menuid)
+	orderDetail, created = OrderDetail.objects.get_or_create(order=order, menuItem_id=menuid)
 
 	if action == 'add':
 		orderDetail.quantity = (orderDetail.quantity + 1)
@@ -123,3 +122,19 @@ def updateItem(request):
 
 	return JsonResponse('added to menu', safe=False)
 
+class checkout(View):
+	def get(self, request):
+		if request.user.is_authenticated:
+			customer = request.user.customer
+			order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
+			items = order.orderdetail_set.all()
+			cartitems = order.get_cart_items
+		else:
+			#guest cart
+			items = []
+			order = {'get_cart_total':0, 'get_cart_items':0}
+			cartitems = order['get_cart_items']
+
+		context = {'items':items, 'order':order, 'cartitems':cartitems}
+		return render(request, 'accounts/checkout.html', context)
+	

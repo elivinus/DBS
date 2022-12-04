@@ -1,8 +1,9 @@
 {% extends 'layouts/base.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 {% block content %}
 <div>&nbsp</div>
 <div>&nbsp</div>
-
 <form method="POST">
     {% csrf_token %}
 
@@ -20,14 +21,14 @@
               </a>
             </div>
             <!--Card content-->
-            <div class="card-body"> 
-              <!--Title-->
-              <h4 class="card-title">{{ starter.name }}</h4>
-              <!--Text-->
-              <p class="card-text">{{ starter.description }}</p>
-                <div class="card-footer text-muted mt-auto">
-                    <p>€ {{ starter.price }} &nbsp &nbsp<button type="button" class="btn btn-primary add-btn">Add to Order</button></p>        
-                </div>
+            <div class="box-element product">
+              <h6><strong>{{ starter.name }}</strong></h6>
+              <hr>
+        
+              <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
+              <a class="btn btn-outline-success" href="#">View</a>
+              <h4 style="display: inline-block; float: right"><strong>€ {{ starter.price }}</strong></h4>
+        
             </div>
           </div>
           <!-- Card -->
@@ -36,8 +37,6 @@
         {% endfor %}
                   
     </div>
-
-
     <p><h2>&nbsp Noodles</h2></p>
     <div class="row row-cols-5 row-cols-md-4 mw-75">
         {% for noodle in noodles %}

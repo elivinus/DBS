@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class MenuItem(models.Model):
     name = models.CharField(max_length= 200)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    price = models.DecimalField(max_digits=7, decimal_places=2,null=True)
     description = models.CharField(max_length= 300)
     image = models.ImageField(upload_to='MEDIA_URL', blank=True, null=True)
     category = models.ManyToManyField('Category', related_name = 'MenuItem')
@@ -32,7 +32,7 @@ class Category(models.Model):
 
 class Order(models.Model):
     orderDate = models.DateTimeField(auto_now_add=True)
-    totalAmount = models.FloatField()
+    totalAmount = models.DecimalField(max_digits=7, decimal_places=2, null=True)
     orderStatus = models.CharField(max_length=50)
     createDate = models.DateTimeField(auto_now_add=True)
     transactionId = models.CharField(max_length=50,null=True)
@@ -86,7 +86,7 @@ class Staff(models.Model):
 
 class OrderDetail(models.Model):
     quantity = models.IntegerField(default=0, null=True, blank=True)
-    totalAmount = models.FloatField(default=0.0, null=True, blank=True)
+    totalAmount = models.DecimalField(max_digits=7, decimal_places=2, null=True)
     createDate = models.DateTimeField(auto_now_add=True)
     menuItemId = models.ForeignKey('MenuItem',on_delete=models.CASCADE, null=True, blank=True)
     orderId = models.ForeignKey('Order', on_delete=models.CASCADE,null=True, blank=True)
@@ -96,7 +96,7 @@ class OrderDetail(models.Model):
     
 class Ingredint(models.Model):
     name = models.CharField(max_length= 200)
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=7,decimal_places=2, null=True)
     create_date = models.DateTimeField(auto_now_add=True)
     recipeId = models.ForeignKey('Recipe', on_delete=models.CASCADE, null=True, blank=True)
     supplierId = models.ForeignKey('Supplier', on_delete=models.CASCADE,null=True, blank=True)

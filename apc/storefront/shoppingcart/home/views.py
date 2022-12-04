@@ -1,11 +1,14 @@
 
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.views import View
 from ..authentication.models import MenuItem
 from ..authentication.forms import CreateNewCustomer
 from ..authentication.models import Customer, OrderDetail
-from ..authentication.models import Category
+from ..authentication.models import Category, Order
+from ..authentication.models import Order, OrderDetail
+import json
+
 
 
 # Create your views here.
@@ -41,9 +44,6 @@ class About(View):
 	def get(self, request, *args, **kwargs):
 		return render(request, 'includes/about.html')
 
-class Cart(View):
-	def get(self, request, *args, **kwargs):
-		return render(request, 'accounts/cart.html')
 
 class Login(View):
 	def get(self, request, *args, **kwargs):
@@ -54,43 +54,41 @@ class Signup(View):
 		return render(request, 'accounts/register.html')
 
 class Menu(View):
-	def get(self, request, *args, **kwargs):
+	def get(self, request, *args, **kwargs):	
 		starters = MenuItem.objects.filter(category__name__contains='Starters')
 		mains = MenuItem.objects.filter(category__name__contains='Main')
-		vegetarian = MenuItem.objects.filter(category__name__contains='Vegetarian')
 		noodles = MenuItem.objects.filter(category__name__contains='Noodles')
-		softdrinks = MenuItem.objects.filter(category__name__contains='Soft Drinks')
-		wine = MenuItem.objects.filter(category__name='Wine')
-		softdrinks = MenuItem.objects.filter(category__name__contains='soft')
+		softdrinks = MenuItem.objects.filter(category__name__contains='SoftDrinks')
+		wines = MenuItem.objects.filter(category__name__contains='Wine')
+		desserts = MenuItem.objects.filter(category__name__contains='Desserts')
+		vegetarian = MenuItem.objects.filter(category__name__contains='Vegetarian')
 		# pass into context
-		context = {
+		contect = {
 			'starters': starters,
 			'mains': mains,
-			'noodels': noodles,
-			'vegetarian': vegetarian,
+			'noodles': noodles,
+			'vegetarian': vegetarian,			
 			'softdrinks': softdrinks,
-			'wine': wine,
+			'wines': wines,
+			'desserts': desserts,
 		}
-	
-		return render(request, 'accounts/menu.html', context)
+		return render(request, 'accounts/menu.html', contect)
 
-	# def post(self, request, *args, **kwargs):
-	# 	order_items = {
-	# 		'items': [],
-	# 	} 
-	# 	items = request.POST.getlist('items[]')
-		
-	# 	for item in items:
-	# 		menu_item = MenuItem.objects.get(pk__conains=int(item))
-	# 		item_data = {
-	# 			'id': menu_item.pk
-	# 			'name': menu_item.name,
-	# 			'price': menu_item.price,
-	# 		}
-	# 		order_items['items'].append(item_data)
+class Cart(View):
+	def get(self, request):	
+		if request.user.is_authenticated:
+			customer = request.user.customer
+			order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
+			items = order.orderdetail_set.all()
+		else:
+			#guest cart
+			items = []
+			order = {'get_cart_total':0, 'get_cart_items':0}
 
-	# 		price = 0 
-	# 		item_id = []
+		context = {'items':items, 'order':order}
+		return render(request, 'accounts/cart.html', context)
+
+
 
 class Contact(View):
 	def get(self, request, *args, **kwargs):
@@ -100,3 +98,43 @@ class Gallery(View):
 	def get(self, request, *args, **kwargs):
 		return render(request, 'includes/gallery.html')
 
+def updateItem(request):
+	data = json.loads(request.body)
+	menuid = data['menuid']
+	action = data['action']
+	print('Action:', action)
+	print('MenuID:', menuid)
+
+	customer = request.user.customer
+	menu = MenuItem.objects.get(id=menuid)
+	order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
+	orderDetail, created = OrderDetail.objects.get_or_create(order=order, menuItem_id=menuid)
+
+	if action == 'add':
+		orderDetail.quantity = (orderDetail.quantity + 1)
+	elif action == 'remove':
+		orderDetail.quantity = (orderDetail.quantity - 1)
+	
+	orderDetail.save()
+
+	if orderDetail.quantity <= 0:
+		orderDetail.delete()
+
+	return JsonResponse('added to menu', safe=False)
+
+class checkout(View):
+	def get(self, request):
+		if request.user.is_authenticated:
+			customer = request.user.customer
+			order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
+			items = order.orderdetail_set.all()
+			cartitems = order.get_cart_items
+		else:
+			#guest cart
+			items = []
+			order = {'get_cart_total':0, 'get_cart_items':0}
+			cartitems = order['get_cart_items']
+
+		context = {'items':items, 'order':order, 'cartitems':cartitems}
+		return render(request, 'accounts/checkout.html', context)
+	

@@ -27,6 +27,7 @@ urlpatterns = [
     path('shoppingcart/', include('shoppingcart.home.urls')),
     path('_debug_/', include(debug_toolbar.urls)),
     path('', Index.as_view(), name='index'),
+    path('account/', include('allauth.urls')),
     path('about/', About.as_view(), name='about'),
     path('menu/', Menu.as_view(), name='menu'),
     path('login/', Login.as_view(), name='login'),

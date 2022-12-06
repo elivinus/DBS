@@ -29,7 +29,7 @@ def register_request(request):
 	#	return HttpResponseRedirect("/%i" %createItem.id)
 	else:
 		form = CreateNewCustomer()
-	return render(request,'accounts/register.html', {'form':form})
+	return render(request,'accounts/signup.html', {'form':form})
 
 def login_request(request):
     
@@ -51,7 +51,8 @@ class Login(View):
 
 class Signup(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, 'accounts/register.html')
+		emailAddress = Customer.objects.filter()
+		return render(request, 'accounts/signup.html')
 
 class Menu(View):
 	def get(self, request, *args, **kwargs):	

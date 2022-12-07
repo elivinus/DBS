@@ -1,12 +1,14 @@
 
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from ..authentication.models import MenuItem
 from ..authentication.forms import CreateNewCustomer
 from ..authentication.models import Customer, OrderDetail
 from ..authentication.models import Category, Order
 from ..authentication.models import Order, OrderDetail
+from django.contrib.auth import login, authenticate
+
 import json
 
 
@@ -29,11 +31,25 @@ def register_request(request):
 	#	return HttpResponseRedirect("/%i" %createItem.id)
 	else:
 		form = CreateNewCustomer()
-	return render(request,'accounts/register.html', {'form':form})
+	return render(request,'accounts/signup.html', {'form':form})
 
 def login_request(request):
     
     return render(request,'accounts/login.html', {'form':'login'})
+
+def signup(request):
+    if request.method == 'POST':
+        form = CreateNewCustomer(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = CreateNewCustomer()
+    return render(request, 'accounts/signup.html', {'form': form})
 
 # class page request
 class Index(View):
@@ -51,7 +67,8 @@ class Login(View):
 
 class Signup(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, 'accounts/register.html')
+		emailAddress = Customer.objects.filter()
+		return render(request, 'accounts/signup.html')
 
 class Menu(View):
 	def get(self, request, *args, **kwargs):	

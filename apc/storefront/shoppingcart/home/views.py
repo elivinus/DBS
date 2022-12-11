@@ -63,12 +63,11 @@ class About(View):
 
 class Login(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, 'accounts/login.html')
+		return render(request, 'account/login.html')
 
 class Signup(View):
 	def get(self, request, *args, **kwargs):
-		emailAddress = Customer.objects.filter()
-		return render(request, 'accounts/signup.html')
+		return render(request, 'account/signup.html')
 
 class Menu(View):
 	def get(self, request, *args, **kwargs):	

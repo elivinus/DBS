@@ -165,14 +165,17 @@ STATICFILES_DIRS = [
 
 
 ACCOUNT_FORMS = {
-    'signup': 'shoppingcart.home.forms.CustomSignupForm',
+    'signup': 'shoppingcart.authentication.forms.CustomSignupForm',
 }
 
 ACCOUNT_ADAPTER = 'shoppingcart.home.account_adapter.NoNewUsersAccountAdapter'
 LOGIN_REDIRECT_URL = 'index'
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_UNIQUE_EMAIL = True

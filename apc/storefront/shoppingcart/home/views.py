@@ -1,12 +1,14 @@
 
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from ..authentication.models import MenuItem
 from ..authentication.forms import CreateNewCustomer
 from ..authentication.models import Customer, OrderDetail
 from ..authentication.models import Category, Order
 from ..authentication.models import Order, OrderDetail
+from django.contrib.auth import login, authenticate
+
 import json
 
 
@@ -29,11 +31,25 @@ def register_request(request):
 	#	return HttpResponseRedirect("/%i" %createItem.id)
 	else:
 		form = CreateNewCustomer()
-	return render(request,'accounts/register.html', {'form':form})
+	return render(request,'accounts/signup.html', {'form':form})
 
 def login_request(request):
     
     return render(request,'accounts/login.html', {'form':'login'})
+
+def signup(request):
+    if request.method == 'POST':
+        form = CreateNewCustomer(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = CreateNewCustomer()
+    return render(request, 'accounts/signup.html', {'form': form})
 
 # class page request
 class Index(View):
@@ -47,11 +63,11 @@ class About(View):
 
 class Login(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, 'accounts/login.html')
+		return render(request, 'account/login.html')
 
 class Signup(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, 'accounts/register.html')
+		return render(request, 'account/signup.html')
 
 class Menu(View):
 	def get(self, request, *args, **kwargs):	
@@ -73,22 +89,6 @@ class Menu(View):
 			'desserts': desserts,
 		}
 		return render(request, 'accounts/menu.html', contect)
-
-class Cart(View):
-	def get(self, request):	
-		if request.user.is_authenticated:
-			customer = request.user.customer
-			order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
-			items = order.orderdetail_set.all()
-		else:
-			#guest cart
-			items = []
-			order = {'get_cart_total':0, 'get_cart_items':0}
-
-		context = {'items':items, 'order':order}
-		return render(request, 'accounts/cart.html', context)
-
-
 
 class Contact(View):
 	def get(self, request, *args, **kwargs):
@@ -122,13 +122,15 @@ def updateItem(request):
 
 	return JsonResponse('added to menu', safe=False)
 
-class checkout(View):
-	def get(self, request):
+
+class Cart(View):
+	def get(self, request):	
 		if request.user.is_authenticated:
 			customer = request.user.customer
 			order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
 			items = order.orderdetail_set.all()
 			cartitems = order.get_cart_items
+		
 		else:
 			#guest cart
 			items = []
@@ -136,5 +138,30 @@ class checkout(View):
 			cartitems = order['get_cart_items']
 
 		context = {'items':items, 'order':order, 'cartitems':cartitems}
+		return render(request, 'accounts/cart.html', context)
+
+
+class checkout(View):
+	def get(self, request):
+		if request.user.is_authenticated:
+			customer = request.user.customer
+			order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
+			items = order.orderdetail_set.all()
+			cartitems = order.get_cart_items
+			
+			name = Customer.objects.values_list('name', flat=True).get(id=customer.id)
+			city = Customer.objects.values_list('city', flat=True).get(id=customer.id)
+			postcode = Customer.objects.values_list('postcode', flat=True).get(id=customer.id)
+			address = Customer.objects.values_list('homeAddress', flat=True).get(id=customer.id)
+			phone = Customer.objects.values_list('phoneNumber', flat=True).get(id=customer.id)
+			
+		
+		else:
+			#guest cart
+			items = []
+			order = {'get_cart_total':0, 'get_cart_items':0}
+			cartitems = order['get_cart_items']
+
+		context = {'items':items, 'order':order, 'cartitems':cartitems, 'address':address, 'name':name, 'city':city, 'postcode':postcode, 'phone':phone}
 		return render(request, 'accounts/checkout.html', context)
 	

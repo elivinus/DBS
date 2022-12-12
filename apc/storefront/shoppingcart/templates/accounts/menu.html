@@ -1,8 +1,9 @@
 {% extends 'layouts/base.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 {% block content %}
 <div>&nbsp</div>
 <div>&nbsp</div>
-
 <form method="POST">
     {% csrf_token %}
 
@@ -37,7 +38,6 @@
         {% endfor %}
                   
     </div>
-
     <p><h2>&nbsp Noodles</h2></p>
     <div class="row row-cols-5 row-cols-md-4 mw-75">
         {% for noodle in noodles %}

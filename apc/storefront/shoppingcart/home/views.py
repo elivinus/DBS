@@ -65,6 +65,10 @@ class Login(View):
 	def get(self, request, *args, **kwargs):
 		return render(request, 'account/login.html')
 
+class Logout(View):
+	def get(self, request, *args, **kwargs):
+		return render(request, 'account/logout.html')
+
 class Signup(View):
 	def get(self, request, *args, **kwargs):
 		return render(request, 'account/signup.html')

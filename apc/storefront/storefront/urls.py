@@ -18,7 +18,7 @@ from django.urls import include, path
 import debug_toolbar
 from django.conf import settings
 from django.conf.urls.static import static
-from shoppingcart.home.views import Index, About, Menu, Contact, Gallery, Login, Signup, Cart, checkout, updateItem
+from shoppingcart.home.views import Index, About, Menu, Contact, Gallery, Login, Signup, Cart, checkout, updateItem, Logout
 
 
 
@@ -30,7 +30,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('about/', About.as_view(), name='about'),
     path('menu/', Menu.as_view(), name='menu'),
-    path('logout/', include('allauth.urls')),
+    path('logout/', Logout.as_view(), name='logout'),
     path('login/', Login.as_view(), name='login'),
     path('signup/', Signup.as_view(), name='signup'),
     path('contact/', Contact.as_view(), name='contact'),

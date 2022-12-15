@@ -9,7 +9,7 @@ from ..authentication.models import Category, Order
 from ..authentication.models import Order, OrderDetail
 from django.contrib.auth import login, authenticate
 
-import json
+import json, datetime
 
 
 
@@ -125,6 +125,20 @@ def updateItem(request):
 		orderDetail.delete()
 
 	return JsonResponse('added to menu', safe=False)
+
+def processOrder(request):
+	transactionId = datetime.datetime.now().timestamp()
+	data = json.loads(request.body)
+
+	if request.user.is_authenticated:
+		customer = request.user.customer
+		order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
+		total = float(data['form']['total'])
+		order.transactionId = transactionId
+	else:
+		print('User is not logged in..')
+
+	return JsonResponse('Payment Complete', safe=False)
 
 
 class Cart(View):

@@ -75,6 +75,17 @@ class Signup(View):
 
 class Menu(View):
 	def get(self, request, *args, **kwargs):	
+
+		if request.user.is_authenticated:
+			customer = request.user.customer
+			order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
+			items = order.orderdetail_set.all()
+			cartItems = order.get_cart_items
+		else:
+			items = []
+			order = {'get_cart_total':0, 'get_cart_items':0}
+			cartItems = order['get_cart_items']
+
 		starters = MenuItem.objects.filter(category__name__contains='Starters')
 		mains = MenuItem.objects.filter(category__name__contains='Main')
 		noodles = MenuItem.objects.filter(category__name__contains='Noodles')
@@ -91,6 +102,8 @@ class Menu(View):
 			'softdrinks': softdrinks,
 			'wines': wines,
 			'desserts': desserts,
+			'cartItems': cartItems,
+			
 		}
 		return render(request, 'accounts/menu.html', contect)
 
@@ -134,7 +147,14 @@ def processOrder(request):
 		customer = request.user.customer
 		order, created = Order.objects.get_or_create(customer=customer, paymentStatus=False)
 		total = float(data['form']['total'])
-		order.transactionId = transactionId
+		
+		Customer.homeAddress = data['shipping']['address']
+		Customer.city = data['shipping']['city']
+		Customer.postcode = data['shipping']['postcode']
+
+		Customer.objects.filter(user=request.user).update(homeAddress=Customer.homeAddress, city=Customer.city, postcode=Customer.postcode)
+		Order.objects.filter(customer=customer, paymentStatus=False).update(paymentStatus=True, transactionId=transactionId)
+
 	else:
 		print('User is not logged in..')
 

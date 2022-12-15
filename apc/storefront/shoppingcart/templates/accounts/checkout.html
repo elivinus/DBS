@@ -10,16 +10,18 @@
             <form id="form">
                 <div id="user-info">
                     <div class="form-field">
+                        <p>Name:</p>
                         <input required class="form-control" type="text" name="name" placeholder="{{ name }}">
                     </div>
                     <div class="form-field">
+                        <p>Phone Number:</p>
                         <input required class="form-control" type="Phone" name="Phone" placeholder="{{ phone }}">
                     </div>
                 </div>
                 
                 <div id="shipping-info">
                     <hr>
-                    <p>Delivery Information:</p>
+                    <p>Delivery Address:</p>
                     <hr>
                     <div class="form-field">
                         <input class="form-control" type="text" name="address" placeholder="{{ address }} test">
@@ -33,12 +35,16 @@
                 </div>
 
                 <hr>
-                <input id="form-button" class="btn btn-success btn-block" type="submit" style="background-color:#686868; margin:5px; " value="Continue">
+                
+                <div class="btn btn-success btn-block" id="address-save" >
+                    Confirm Address <button id="address">Save</button>
+                </div>
+
             </form>
         </div>
 
         <br>
-        <div class="d-none" id="payment-info">
+        <div class="btn btn-success btn-block" id="payment-info">
             <small>Paypal Options</small>
             <button id="make-payment">Make payment</button>
         </div>
@@ -58,7 +64,7 @@
                 <div style="flex:2"><img class="row-image" src="{{ item.menuItem.imageURL }}" alt="Food" width="125" height="100"></div>
                 <div style="flex:2"><p><strong>{{ item.menuItem }}</strong></p></div>
                 <div style="flex:1"><p>€{{ item.menuItem.price|floatformat:2}}</p></div>
-                <div style="flex:1"><p>Amount {{item.quantity}}</p></div>
+                <div style="flex:1"><p>No. {{item.quantity}}</p></div>
             </div>
             &nbsp
             {% endfor %}
@@ -70,13 +76,26 @@
 
 <script type="text/javascript">
     var form = document.getElementById('form')
-    form.addEventListener('submit', function(e){
-        e.preventDefault()
-        console.log('form submitted')
-        document.getElementById('form-button').classList.add('d-none')
-        document.getElementById('payment-info').classList.remove('d-none')
-        document.getElementById('payment-info').classList.add('btn btn-success btn-block')
+		form.addEventListener('address-save', function(e){
+	    	e.preventDefault()
+	    	console.log('Form Submitted...')
+	    	document.getElementById('form-button').classList.add(".d-none");
+	    	document.getElementById('payment-info').classList.remove("hidden");
+	    })
 
-    })
+        document.getElementById('form-button').addEventListener('click', function(e){
+            console.log('test 2')
+        })
+
+        document.getElementById('make-payment').addEventListener('click', function(e){
+            submitFormData()
+        })
+
+        function submitFormData(){
+            console.log('Payment button clicked')
+}
+    
 </script>
+    
+
 {% endblock %}

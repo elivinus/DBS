@@ -12,8 +12,10 @@ Table of Content
         1.1.8 About Us page
     1.2 Built With
 2.0 Getting Started
-4. Prerequisites
-5. Installation
+    2.1 Prerequisites
+    2.2 Installations
+    2.3 Source Code Download
+
 6. Usage
 7. Roadmap
 8. Contributing
@@ -57,13 +59,59 @@ This page shows information about our product to existing or prospective custome
 
 Food menu delivery web application is built using django a python based framework for web application development. We had to use some django custom plugin modules to develop the web application. All the plugin modules are as listed in "requirement.txt". The django version used for the project is Django version 4.1.3. The application is written using python 3.11.
 
-The database used is postgresql database version 14. We had to install database django plugin for django called psycopg2-binary version 2.9.5. The psycopg2-binary helps us connect to the database and create database and all defined tables, entities and relationships as defined in our model.py python file .
+The database used is postgresql database version 14. We had to install database django plugin for django called psycopg2-binary version 2.9.5. The psycopg2-binary helps us connect to the database and create database and all defined tables, entities and relationships as defined in our model.py python file. We used boostrap 5 for the view design.
 
 
 2.0 Getting Started
 
-This session describes how to setup our project to get it to run successfully. We used Visual Studio Code as the IDE for development.
+This session describes how to setup our project to get it to run successfully. We used Visual Studio Code as the IDE for development. We ensure all the required extensions that is need for the project as listed in the requirement.txt are installed.
 
+To create Virtual Environment
+
+$python3 -m venv /path/to/directory
+
+2.1 Prerequisites
+
+- Python3 must be linked to valid installatio of python 3. 
+- The "pip" should be installed and pip3 valid for installing python 3 packages.
+- You must have virtual environment created to help isolate your project artifacts from systems artifacts. 
+- Ensure your git is istalled on your computer and login account set.
+
+2.2 Installtions
+
+- Download and install Visual Studio Code from here; https://code.visualstudio.com
+
+Then open the extension tab and install all the required django extensions as listed in the requirements.txt file.
+
+- If you do not have django installed for python 3, then run the following command
+
+For Mac OS Users
+
+$ pip3 install django
+
+- Install all requirement by running the following. All requirements will be installed in your virtual environment.
+
+For Mac OS Users
+
+$ pip3 install -r requirements.txt
+
+- Download and install Postgresql 14. Ensure the port is set to 5434.
+
+2.3 Source Code Download
+
+To download the source code, change directory to where you want to store the source code on your terminal or command prompt of your VSCode. Then run the following command;
+
+$ git clone https://github.com/elivinus/DBS.git
+
+Once the project is cloned, change directory to your virtual environment and activate your project to use your virtual environemnt as follows;
+
+You’ll need to use different syntax for activating the virtual environment depending on which operating system and command shell you’re using.
+
+On Unix or MacOS, using the bash shell: source /path/to/venv/bin/activate
+On Unix or MacOS, using the csh shell: source /path/to/venv/bin/activate.csh
+On Unix or MacOS, using the fish shell: source /path/to/venv/bin/activate.fish
+On Windows using the Command Prompt: path\to\venv\Scripts\activate.bat
+On Windows using PowerShell: path\to\venv\Scripts\Activate.ps1
 
 
 

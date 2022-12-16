@@ -16,12 +16,9 @@ Table of Content
     2.2 Installations
     2.3 Source Code Download
 
-6. Usage
-7. Roadmap
-8. Contributing
-9. License
-10.Contact
-11.References
+3. Usage
+4. Roadmap
+5.References
 
 
 1 .0 Introduction

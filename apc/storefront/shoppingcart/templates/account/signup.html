@@ -75,6 +75,30 @@
               {% if redirect_field_value %}
               <input type="hidden" class="form-control" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
               {% endif %}
+			  <div class="col-md-6 mb-4">
+				<div class="form-outline">
+				  <input type="number" name="phonenumber" class="form-control" />
+				  <label class="form-label" for="phonenumber">Phone Number</label>
+				</div>
+			  </div>
+			  <div class="col-md-6 mb-4">
+				<div class="form-outline">
+				  <textarea class="form-control" name="homeaddress" rows="3"></textarea>
+				  <label class="form-label" for="homeaddress">Home Address</label>
+				</div>
+			  </div>
+			  <div class="col-md-6 mb-4">
+				<div class="form-outline">
+				  <input type="text" name="city" class="form-control" />
+				  <label class="form-label" for="city">City</label>
+				</div>
+			  </div>
+			  <div class="col-md-6 mb-4">
+				<div class="form-outline">
+				  <input type="text" name="postcode" class="form-control" />
+				  <label class="form-label" for="postcode">Postcode</label>
+				</div>
+			  </div>
               <button class="btn btn-primary btn-block mb-4" type="submit">{% trans "Sign Up" %} &raquo;</button>
             </form>
           </div>

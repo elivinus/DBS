@@ -55,7 +55,7 @@
                         </div>
                         <div class="form-field">
                             <p>Phone Number:</p>
-                            <input required class="form-control" type="Phone" name="Phone" placeholder="phone">
+                            <input required class="form-control" type="Phone" name="Phone" placeholder="Phone">
                         </div>
                     </div>
                     
@@ -112,7 +112,7 @@
             
              
                 <div style="flex:2"><img class="row-image" src="{{ item.menuItem.imageURL }}" alt="Food" width="125" height="100"></div>
-                <div style="flex:2"><p><strong>{{ item.menuItem }}</strong></p></div>
+                <div style="flex:2"><p><strong>{{ item.menuItem.name }}</strong></p></div>
                 <div style="flex:1"><p>€{{ item.menuItem.price|floatformat:2}}</p></div>
                 <div style="flex:1"><p>No. {{item.quantity}}</p></div>
             </div>
@@ -155,7 +155,7 @@
             
             var userFormData = {
 				'name':null,
-				'email':null,
+				'Phone':null,
 				'total':total,
 			}
 
@@ -169,7 +169,7 @@
 
             if (user == 'AnonymousUser'){
 	    		userFormData.name = form.name.value
-	    		userFormData.email = form.email.value
+	    		userFormData.phone = form.Phone.value
 	    	}
 
             var url = '/process_order/'
@@ -184,8 +184,12 @@
             .then((response) => response.json())
 	        .then((data) => {
                 console.log('Success:', data);
-                alert('Transaction completed');  
-		        window.location.href = "{% url 'about' %}"
+                alert('Transaction completed'); 
+                
+                cart = {}
+                document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+                
+		        window.location.href = "{% url 'index' %}"
     		})
         }
     

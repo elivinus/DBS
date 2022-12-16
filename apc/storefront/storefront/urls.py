@@ -18,7 +18,7 @@ from django.urls import include, path
 import debug_toolbar
 from django.conf import settings
 from django.conf.urls.static import static
-from shoppingcart.home.views import Index, About, Menu, Contact, Gallery, Login, Signup, Cart, checkout, updateItem, Logout
+from shoppingcart.home.views import Index, About, Menu, Contact, Gallery, Login, Signup, Cart, checkout, updateItem, Logout, processOrder
 
 
 
@@ -38,6 +38,8 @@ urlpatterns = [
     path('cart/', Cart.as_view(), name='cart'),
     path('update_Item/', updateItem, name="update_Item"),
     path('checkout/', checkout.as_view(), name='checkout'),
+    path('process_order/', processOrder, name='process_order'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
   
 
+#finall pull and commit

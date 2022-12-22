@@ -16,9 +16,14 @@ Table of Content
     2.2 Installations
     2.3 Source Code Download
 
-3. Usage
-4. Roadmap
-5.References
+3.0 Attributions
+    3.1 Users and Customer Management
+    3.2 Menu, Cart and Checkout 
+    3.3 Gallery 
+    3.4 Contact Us
+    
+4.0 Roadmap
+5.0 References
 
 
 1 .0 Introduction
@@ -110,8 +115,29 @@ On Unix or MacOS, using the fish shell: source /path/to/venv/bin/activate.fish
 On Windows using the Command Prompt: path\to\venv\Scripts\activate.bat
 On Windows using PowerShell: path\to\venv\Scripts\Activate.ps1
 
+3.0 Attributions
+All features of the application is attributted to each member of the project team to acknowledge their effort and dedication.
 
+3.1 Users and Customer Management
 
-References
+The user signup and login pages was created and implemented by Enoja Livinus. He did the design, created the html, CSS and Javascript based web pages, implemented the page switch, redirects and implemented the backend controllers for each pages. All new user signup are persisted to the database and used for authentication during login. 
+
+3.2 Menu, Cart and Checkout 
+
+The Menu, cart and checkuot pages were created and implemented by Michael Doyle. He was an integral team member that put a lot off effort to ensure we deliver the project.He did the design, created the html, CSS and Javascript based web pagee. He implemented the page switches, redirects and implemented the backend conrollers for each pages. All display and creation of menu items on the menu page was done by him. The checkout summerry page that allows quantity of selected item to be modified was implemented by him.
+
+3.3 Gallery 
+
+The gallery page was created and implemented by Yash. He did the design, created the html, CSS and Javascript based web page. He implemented the page switches, redirects and the backend conrollers for the page.
+
+3.4 Contact Us
+
+The contact us page was created and implemented by Ebele Onyeka. She did the design, created the html, CSS and javascript based web page. She implemented the page switch, redirects and the backend controller for the pag.
+
+4.0 Road Map
+
+We started the project by holding meetings to discuss the idea and design. We agreed on the design and shared responsibilities with all members. There were so many review sessions to align on changes and additions to the application design. We had a lot of challenges during the implementation of this project. we had to make concultations to person we feel could help clarify challeneges and guide us towards resolving them. 
+
+5.0 References
 
 https://django-allauth.readthedocs.io/en/latest/views.html#signup-account-signup

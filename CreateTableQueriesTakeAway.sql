@@ -91,7 +91,8 @@ IngredientCreateDate  date not null,
 CONSTRAINT recipe_fk FOREIGN KEY (IngredientName)
 CONSTRAINT supplier_fk FOREIGN KEY (IngredientName)
 )
-GOCREATE TABLE tbl_Recipe
+GO
+CREATE TABLE tbl_Recipe
 (
 RecipeName varchar(20) not null,
 RecipeDescription varchar(100) not null,

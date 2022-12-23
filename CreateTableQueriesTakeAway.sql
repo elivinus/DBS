@@ -1,3 +1,5 @@
+USE TakeAwayDBCA1
+GO
 CREATE TABLE tbl_MenuItem
 (
 MenuName   varchar(10) not null,

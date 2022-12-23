@@ -21,9 +21,15 @@ Table of Content
     3.2 Menu, Cart and Checkout 
     3.3 Gallery 
     3.4 Contact Us
+
+4.0 Technologies and Libraries Used
+    4.1 Backend
+    4.2 Frontend
+    4.3 Database
+    4.4 Version Control
     
-4.0 Roadmap
-5.0 References
+5.0 Roadmap
+6.0 References
 
 
 1 .0 Introduction
@@ -134,10 +140,35 @@ The gallery page was created and implemented by Yash. He did the design, created
 
 The contact us page was created and implemented by Ebele Onyeka. She did the design, created the html, CSS and javascript based web page. She implemented the page switch, redirects and the backend controller for the pag.
 
-4.0 Road Map
+4.0 Technologies and Libraries Used
+This section shows the technologies and libraries used to implement the project. After our initial project meeting, the team decided to use the following techonlogies for different aspects of the project.
+
+4.1 Backend
+The team used the following technologies for the backend
+
+a) Python version 3.11
+b) Django version 4.1.3
+
+4.2 Front End
+The following technologies was used for the frontend implementation
+
+a) Bootstrap 5
+b) HTML 5
+c) Javascript
+d) CSS
+
+4.3 Database
+We decided to use a relational dabase management system (RDBMS) for our database. We chose to use Postgresql 14.
+
+4.4 Version control 
+The version control used for the project implementation is GitHub. This was because GitHub is a free version control solution for limited source code management. The project was commited on github https://github.com/elivinus/DBS/. The github allowed for collaboration among team members and helped us track progress of each team member during the implementation.
+
+5.0 Road Map
 
 We started the project by holding meetings to discuss the idea and design. We agreed on the design and shared responsibilities with all members. There were so many review sessions to align on changes and additions to the application design. We had a lot of challenges during the implementation of this project. we had to make concultations to person we feel could help clarify challeneges and guide us towards resolving them. 
 
-5.0 References
+6.0 References
 
 https://django-allauth.readthedocs.io/en/latest/views.html#signup-account-signup
+https://studygyaan.com/django/how-to-extend-django-user-model
+https://www.infoworld.com/article/3239675/virtualenv-and-venv-python-virtual-environments-explained.html

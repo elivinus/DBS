@@ -77,9 +77,7 @@ CREATE TABLE tbl_Supplier
 SupplierName varchar(20) not null,
 SupplierEmailAddress varchar(50) not null,
 SupplierMobileNumber int not null,
-SupplierPostCode varchar(10) not null,
-SupplierCity varchar(10) not null,
-SupplierAddress varchar(100) not null,
+SupplierAddress  xml (SupplierAddressCollection),
 SupplierCreateDate  date not null
 )
 GO

@@ -2,17 +2,19 @@ USE TakeAwayDBCA1
 GO
 CREATE TABLE tbl_MenuItem
 (
-MenuName   varchar(10) not null,
-MenuPrice    int not null UNIQUE,
-MenuDescription varchar(50) not null,
-MenuImage  image not null,
-Alegies     varchar(50) not null,
-CONSTRAINT category_pk PRIMARY KEY (MenuName)
+MenuName	varchar(50) not null,
+MenuPrice	int	not null,
+CategoryName	varchar(10) not null,
+MenuDescription	varchar(50) not null,
+MenuImage	image	not null,
+Alegies	varchar(50)	not null,
+PRIMARY KEY	(MenuName),
+FOREIGN KEY	(CategoryName)	REFERENCES	tbl_Category(CategoryName),
 )
 GO
 CREATE TABLE tbl_Category
 (
-CategoryName varchar(10) not null
+CategoryName varchar(50) not null
 )
 
 GO

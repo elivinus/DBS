@@ -11,16 +11,10 @@ AS
 				</xsd:sequence>
 			</xsd:complexType>
 	</xsd:element>
-	<xsd:element name="city">
+	<xsd:element name="officeaddress">
 			<xsd:complexType>
 				<xsd:sequence>
-					<xsd:element name="cityname" type="xsd:string" />
-				</xsd:sequence>
-			</xsd:complexType>
-	</xsd:element>
-	<xsd:element name="postcode">
-			<xsd:complexType>
-				<xsd:sequence>
+                    <xsd:element name="cityname" type="xsd:string" />
 					<xsd:element name="postcodedetails" type="xsd:string" />
 				</xsd:sequence>
 			</xsd:complexType>

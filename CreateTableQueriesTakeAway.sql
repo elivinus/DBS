@@ -1,6 +1,6 @@
 USE TakeAwayDBCA1
-GO 
 
+GO 
 CREATE TABLE tbl_Category
 (
 CategoryID   varchar(20) not null,
@@ -19,8 +19,8 @@ SupplierAddress  xml (SupplierAddressCollection),
 SupplierCreateDate  date not null,
 PRIMARY KEY (SupplierID),
 )
-GO
 
+GO
 CREATE TABLE tbl_Ingredient
 (
 IngredientID varchar(30) not null,
@@ -31,6 +31,7 @@ SupplierID varchar(30) not null,
 PRIMARY KEY (IngredientID),
 FOREIGN KEY (SupplierID) REFERENCES tbl_Supplier (SupplierID),
 )
+
 GO
 CREATE TABLE tbl_Recipe
 (
@@ -44,7 +45,6 @@ FOREIGN KEY (IngredientID) REFERENCES tbl_Ingredient (IngredientID),
 )
 
 GO
-
 CREATE TABLE tbl_MenuItem
 (
 MenuItemID	varchar(30) not null,
@@ -59,8 +59,8 @@ PRIMARY KEY	(MenuItemID),
 FOREIGN KEY	(CategoryID)	REFERENCES	tbl_Category(CategoryID),
 FOREIGN KEY	(RecipeID)	REFERENCES	tbl_Recipe(RecipeID),
 )
-Go
 
+Go
 CREATE TABLE tbl_Customer
 (
 CustomerID	varchar(30) not null,
@@ -75,8 +75,8 @@ CustomerCreateDate  date not null,
 CustomerPassword varchar(100) not null
 PRIMARY KEY (CustomerID),
 )
-GO
 
+GO
 CREATE TABLE tbl_DeliveryAgent
 (
 AgentID	varchar(30) not null,
@@ -90,8 +90,8 @@ AgentHomeAddress varchar(100) not null,
 AgentCreateDate  date not null
 PRIMARY KEY (AgentID),
 )
-GO
 
+GO
 CREATE TABLE tbl_Staff
 (
 StaffID	varchar(30) not null,
@@ -105,8 +105,8 @@ StaffHomeAddress varchar(100) not null,
 StaffCreateDate  date not null
 PRIMARY KEY (StaffID),
 )
-GO
 
+GO
 CREATE TABLE tbl_Order
 (
 OrderDate date not null,

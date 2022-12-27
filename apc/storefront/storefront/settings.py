@@ -166,6 +166,7 @@ STATICFILES_DIRS = [
 
 ACCOUNT_FORMS = {
     'signup': 'shoppingcart.authentication.forms.CustomSignupForm',
+    'reset_password': 'allauth.account.forms.ResetPasswordForm',
 }
 
 ACCOUNT_ADAPTER = 'shoppingcart.home.account_adapter.NoNewUsersAccountAdapter'

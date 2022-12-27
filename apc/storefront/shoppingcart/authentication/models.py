@@ -32,17 +32,14 @@ class Category(models.Model):
 
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
-    name = models.CharField(max_length= 200, null=True)
-    emailaddress = models.EmailField(max_length= 50, null=True)
-    phoneNumber = models.IntegerField()
+    phoneNumber = models.CharField(max_length= 12, null=True)
     homeAddress = models.CharField(max_length= 200)
     city = models.CharField(max_length= 200, null=True)
     postcode = models.CharField(max_length= 200, null=True)
     createDate = models.DateTimeField(auto_now_add=True)
-    userPassword = models.CharField(max_length=50, null=True)
     
     def __str__(self):
-        return self.name
+        return self.phoneNumber
 
 class Order(models.Model):
     orderDate = models.DateTimeField(auto_now_add=True)

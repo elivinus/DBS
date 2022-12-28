@@ -19,9 +19,8 @@ ON tbl_MenuItem.CategoryId = tbl_Category.CategoryID
 -- SELECT Query with Group BY and Order BY 
 SELECT PaymentStatus, AgentID, OrderAmount
 FROM tbl_Order
-WHERE PaymentStatus = 'Paid'
-GROUP BY AgentID,PaymentStatus,OrderAmount
-ORDER BY OrderAmount;
+GROUP BY AgentID,PaymentStatus,OrderAmount HAVING PaymentStatus = 'Paid'
+ORDER BY OrderAmount
 
 
 

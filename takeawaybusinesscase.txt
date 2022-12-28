@@ -1,0 +1,17 @@
+
+                                           TAKEAWAY BUSINESS CASE 
+
+
+TakeAway is a system that automate day to day operations of food menu business from order to preparation and delivery. 
+The system can be used by customers to place an order and track the status of their order until the order is delivered. 
+The customer can search for food menu according to price range and food menu category. Before a customer can place an order, 
+the customer must be registered on the system. The customer is able to choose preferred mode of payment; pay with card or pay on delivery. 
+ 
+The system helps TakeAway staff to manage customer information, customer orders, create available food menu, 
+place orders for customers, view order status, assign orders to food menu delivery agents and view order reports. 
+The system keep track of ingredients, ingredients suppliers and food menu order delivery agents information. 
+ 
+The TakeAway staff are classified into manager, waiter and cooks. The manager creates the food menu on the system 
+and have access to entire backend management modules. The waiter can make order for customers, view orders, order status, 
+update order status and can assign orders to food menu delivery agents. The cooks can view orders, update order status 
+and update ingredients stock quantity. 
